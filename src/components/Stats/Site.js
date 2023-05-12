@@ -9,7 +9,7 @@ const Stats = () => {
   const fetchData = useCallback(async () => {
     // request must be authenticated if private
     const res = await fetch(
-      'https://api.github.com/repos/mldangelo/personal-site',
+      'https://api.github.com/repos/johnhentrich/personal-site',
     );
     const resData = await res.json();
     setResponseData(
@@ -29,7 +29,7 @@ const Stats = () => {
 
   return (
     <div>
-      <h3>Some stats about this site</h3>
+      <h3>Not as fun facts</h3>
       <Table data={data} />
     </div>
   );

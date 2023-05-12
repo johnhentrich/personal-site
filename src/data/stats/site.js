@@ -1,51 +1,33 @@
-import dayjs from 'dayjs';
+import React, { useState, useEffect } from 'react';
 
-/* Keys match keys returned by the github api. Fields without keys are
- * mostly jokes. To see everything returned by the github api, run:
- curl https://api.github.com/repos/mldangelo/personal-site
- */
+const Age = () => {
+  const [age, setAge] = useState();
+
+  const tick = () => {
+    const divisor = 1000 * 60 * 60 * 24; // ms in an average year
+    const birthTime = new Date('2023-05-12T05:00:00');
+    setAge(((Date.now() - birthTime) / divisor).toFixed(11));
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => tick(), 25);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+  return <>{age}</>;
+};
+
 const data = [
   {
-    label: 'Stars this repository has on github',
-    key: 'stargazers_count',
-    link: 'https://github.com/mldangelo/personal-site/stargazers',
+    key: 'age',
+    label: 'Days since website was last updated',
+    value: <Age />,
   },
   {
-    label: 'Number of people watching this repository',
-    key: 'subscribers_count',
-    link: 'https://github.com/mldangelo/personal-site/stargazers',
-  },
-  {
-    label: 'Number of forks',
-    key: 'forks',
-    link: 'https://github.com/mldangelo/personal-site/network',
-  },
-  {
-    label: 'Number of spoons',
-    value: '0',
-  },
-  {
-    label: 'Number of linter warnings',
-    value: '0', // enforced via github workflow
-  },
-  {
-    label: 'Open github issues',
-    key: 'open_issues_count',
-    link: 'https://github.com/mldangelo/personal-site/issues',
-  },
-  {
-    label: 'Last updated at',
-    key: 'pushed_at',
-    link: 'https://github.com/mldangelo/personal-site/commits',
-    format: (x) => dayjs(x).format('MMMM DD, YYYY'),
-  },
-  {
-    // TODO update this with a pre-commit hook
-    /* find . | grep ".js" | grep -vE ".min.js|node_modules|.git|.json" |
-    xargs -I file cat file | wc -l */
-    label: 'Lines of Javascript powering this website',
-    value: '2150',
-    link: 'https://github.com/mldangelo/personal-site/graphs/contributors',
+    key: 'technical',
+    label: 'Technical skills',
+    value: 'Python, Java, C++, C, JavaScript, SQL, MongoDB, Neo4j, Jira',
   },
 ];
 

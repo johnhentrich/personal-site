@@ -1,47 +1,47 @@
 // TODO Add a couple lines about each project
 const data = [
   {
-    title: 'Nearest Dollar',
-    subtitle: '2015 BVP Hackathon',
-    image: '/images/projects/nearestdollar.jpg',
-    date: '2015-11-20',
+    title: 'Penn Search',
+    subtitle: 'CIS 553 Final Project',
+    image: '/images/projects/chord.png',
+    link: 'https://netdb.cis.upenn.edu/cis553projects/project2.pdf',
+    date: '2022-5-1',
     desc:
-      'Built for a social impact hackathon. '
-      + 'NearestDollar connected to your bank accounts, credit cards, '
-      + 'or debit cards and rounded up your purchases to donate the balance to '
-      + 'the charity of your choice.',
+    'Using C++ and the ns-3 network simulator, developed a keyword-based search engine incorporating '
+    + 'a Chord overlay network using distributed hash tables for capstone Networked Systems project.',
   },
   {
-    title: 'Harvest',
-    subtitle: 'Won 3rd. place in 2015 Techcrunch Disrupt SF Hackathon',
-    link: 'https://devpost.com/software/harvest',
-    image: '/images/projects/harvest.jpg',
-    date: '2015-09-20',
+    title: 'Livability Index',
+    subtitle: 'CIS 550 Final Project',
+    image: '/images/projects/livability.png',
+    link: 'https://github.com/croot22/CIS-550-Final-Project',
+    date: '2021-4-26',
     desc:
-      'Won ~ $7000 in prizes for an advanced, low cost monitoring solution '
-      + 'for crops. Harvest was designed to catch irrigation leaks, overwatering, '
-      + 'and nutrient deficiencies at an affordable price for the developing world.',
+    'Developed a web application using React, Node.js, MySQL, and AWS that displays '
+    + 'a livability score by zipcode while providing detailed information on home prices '
+    + 'school ratings, crime statistics, and local activities.',
   },
   {
-    title: 'Space Potato',
-    subtitle: 'A kickstarter funded potato powered weather balloon.',
-    link: 'http://www.spacepotato.org',
-    image: '/images/projects/spacepotato.jpg',
-    date: '2015-06-28',
+    title: 'Air Quality SMS Alerts',
+    subtitle: 'Won 3rd place in 2020 MCIT Online Student Association Hackathon',
+    link: 'https://devpost.com/software/air-quality-sms-alerts',
+    image: '/images/projects/sms.png',
+    date: '2020-08-30',
     desc:
-      'Launched a potato battery powered weather balloon with two cameras '
-      + 'and gps transponder. Resulting photos were published in a coffee table book. '
-      + 'You can email me for a copy.',
+      'Web application using Javascript that sends SMS alerts for air quality index '
+      + 'levels and weather conditions using the Twilio SMS API, OpenWeatherMap Weather API '
+      + 'and IQAir air quality index API.',
   },
   {
-    title: 'Cat Detector',
-    subtitle: 'A convolutional neural network to classify cats! (and dogs)',
-    image: '/images/projects/catdetector.jpg',
-    date: '2015-05-15',
+    title: 'News Summarizer',
+    subtitle: 'CIT 591 Final Project.',
+    link: 'https://github.com/johnhentrich/NLP-Text-Summarizer',
+    image: '/images/projects/news.png',
+    date: '2019-08-31',
     desc:
-      'Trained a convolutional neural network to classify between ~ 80 cats breeds. '
-      + 'Over 60,000 cats were classified before server bills made the project too expensive '
-      + 'to continue hosting.',
+      'Java based news summarizer that first web scrapes the daily news '
+      + 'using j-soup and then summarizes while also calculating the sentiment '
+      + 'of each article using CoreNLP.',
   },
 ];
 
