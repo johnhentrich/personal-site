@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnhentrich/personal-site.git"
+    "url": "https://johnhentrich.github.io/personal-site/"
   },
   "engines": {
     "node": ">=14.x"
