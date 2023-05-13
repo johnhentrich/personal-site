@@ -10,13 +10,17 @@ I have 10+ years experience in business operations and strategy, product managem
 - Anything smart home-related
 - Sous vide cooking
 - Music trivia
-- Chargers, Lakers, Padres, and Manchester United
 
 # Travel / Geography
 
-- I am from originally from San Diego, CA where I presently live but I have also lived in Berkeley, CA, Agoura Hills, CA, Davis, CA, and Hanover, NH
+- I am from San Diego but I have also lived in Berkeley, Agoura Hills, Davis, Dearborn, and Hanover
+- In 2005, I moved to Hanover, NH for college
 - In 2006, I visited Canada
-- In 2016, I visited Japan
+- In 2009, I moved to Agoura Hills, CA for my first job out of school
+- In 2010, I moved to San Diego, CA
+- In 2015, I moved to Berkeley, CA to go back to grad school
+- In 2016, I visited Japan and lived in a hotel in Dearborn, MI for a summer
 - In 2017, I visited Spain, Italy, and Kazakhstan
-- In 2018, I visited United Arab Emirates
+- In 2018, I visited United Arab Emirates and moved to Davis, CA
 - In 2019, I visited India
+- In 2021, I moved to San Diego, CA
