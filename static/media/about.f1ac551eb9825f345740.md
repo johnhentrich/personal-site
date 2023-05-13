@@ -19,7 +19,7 @@ I have 10+ years experience in business operations and strategy, product managem
 - In 2009, I moved to Agoura Hills, CA for my first job out of school
 - In 2010, I moved to San Diego, CA
 - In 2015, I moved to Berkeley, CA to go back to grad school
-- In 2016, I visited Japan and lived in a hotel in Dearborn, MI for a summer
+- In 2016, I visited Japan and lived in Dearborn, MI for a summer
 - In 2017, I visited Spain, Italy, and Kazakhstan
 - In 2018, I visited United Arab Emirates and moved to Davis, CA
 - In 2019, I visited India
