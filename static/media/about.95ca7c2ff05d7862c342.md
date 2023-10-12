@@ -17,7 +17,7 @@
 
 # Travel / Geography
 
-- I am from San Diego but I have also lived in Berkeley, Agoura Hills, Davis, Dearborn, and Hanover
+- I live in San Diego today but I have also lived in Berkeley, Agoura Hills, Davis, Dearborn, and Hanover
 
 - In 2006, I visited Canada
 - In 2016, I visited Japan
