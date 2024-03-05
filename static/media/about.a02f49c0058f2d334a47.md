@@ -14,6 +14,7 @@
 - Anything smart home-related
 - Sous vide cooking
 - Music trivia
+- Tinkering with my homelab
 
 # Travel / Geography
 
