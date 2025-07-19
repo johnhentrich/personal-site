@@ -170,32 +170,29 @@ export default function ResumePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </span>
-                Education & Continuous Learning
+                Education
               </h2>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <p className="text-gray-700 leading-relaxed">
-                  I believe in continuous learning and staying current with industry trends. My expertise has been 
-                  developed through a combination of formal education, professional experience, and self-directed 
-                  learning in areas such as:
-                </p>
-                <ul className="mt-4 space-y-2">
-                  <li className="text-gray-700 flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
-                    Advanced data analysis and visualization techniques
-                  </li>
-                  <li className="text-gray-700 flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
-                    Cloud computing platforms and modern web technologies
-                  </li>
-                  <li className="text-gray-700 flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
-                    Business strategy frameworks and methodologies
-                  </li>
-                  <li className="text-gray-700 flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
-                    Product management and user experience principles
-                  </li>
-                </ul>
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    University of California, Berkeley - Haas School of Business
+                  </h3>
+                  <p className="text-gray-600 font-medium mb-2">MBA, General Management</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    University of Pennsylvania
+                  </h3>
+                  <p className="text-gray-600 font-medium mb-2">MCIT, Computer and Information Sciences</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Dartmouth College
+                  </h3>
+                  <p className="text-gray-600 font-medium mb-2">BA, Economics</p>
+                </div>
               </div>
             </section>
           </div>
