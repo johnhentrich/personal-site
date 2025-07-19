@@ -55,15 +55,15 @@ export default function OtherPage() {
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-lg p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">📺 Currently Watching</h3>
-                <p className="text-gray-600">Parks and Rec, South Park, Olympics</p>
+                <p className="text-gray-600">Battlestar Galactica</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">🎮 Currently Playing</h3>
-                <p className="text-gray-600">Super Mario RPG, New Star GP</p>
+                <p className="text-gray-600">Donkey Kong Bonanza, Mario Kart World</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">🎵 Currently Listening</h3>
-                <p className="text-gray-600">Nation of Languages, Kino, Depeche Mode</p>
+                <p className="text-gray-600">Pavement, Depeche Mode, Kino, Nation of Languages</p>
               </div>
             </div>
           </section>
@@ -128,8 +128,8 @@ export default function OtherPage() {
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
-              <span className="text-3xl mb-2 block">☕</span>
-              <p className="text-sm text-gray-700">Coffee enthusiast with a preference for pour-over brewing</p>
+              <span className="text-3xl mb-2 block">👨‍👧‍👦</span>
+              <p className="text-sm text-gray-700">Dad to two amazing kids who keep life interesting</p>
             </div>
             <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg">
               <span className="text-3xl mb-2 block">🛠️</span>
