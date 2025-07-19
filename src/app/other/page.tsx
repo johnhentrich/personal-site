@@ -105,9 +105,7 @@ export default function OtherPage() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-700 leading-relaxed mb-4">
-                I enjoy exploring new places and experiencing different cultures. 
-                So far, I&apos;ve been fortunate to visit 7 countries, each offering 
-                unique perspectives and memorable experiences.
+                Visited 7 countries and counting.
               </p>
               <a 
                 href="https://www.google.com/maps/d/u/0/edit?mid=1ms8A3SDGwsct3ENuw9SkugYzb1LsNUjG&usp=sharing"
