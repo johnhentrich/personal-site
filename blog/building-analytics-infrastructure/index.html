@@ -1,0 +1,418 @@
+<!DOCTYPE html><!--static_build--><html lang="en" class="__variable_e8ce0c __variable_4f7708"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/630c17af355fa44e-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/css/4668c2ce3aedc0d2.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-bafaaa96bb4da6b0.js"/><script src="/_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js" async=""></script><script src="/_next/static/chunks/964-69097a61540f27b4.js" async=""></script><script src="/_next/static/chunks/main-app-c7dbbe749c944a11.js" async=""></script><script src="/_next/static/chunks/874-437a265a67d6cfee.js" async=""></script><script src="/_next/static/chunks/app/blog/%5Bslug%5D/page-1f4356a6f7d08717.js" async=""></script><meta name="next-size-adjust" content=""/><title>Building Analytics Infrastructure for Connected Vehicles | John Hentrich</title><meta name="description" content="How we built a scalable analytics infrastructure to process millions of vehicle data points and generate actionable insights for Ford&#x27;s connected services."/><meta name="author" content="John Hentrich"/><meta name="keywords" content="analytics,infrastructure,automotive,data engineering"/><meta property="og:title" content="John Hentrich"/><meta property="og:description" content="Business Operations &amp; Growth Strategy Professional"/><meta property="og:url" content="https://johnhentrich.com/"/><meta property="og:site_name" content="John Hentrich"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="John Hentrich"/><meta name="twitter:description" content="Business Operations &amp; Growth Strategy Professional"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="font-sans antialiased bg-gray-50 text-gray-900"><div hidden=""><!--$--><!--/$--></div><div class="min-h-screen bg-gradient-to-br from-white to-gray-50"><header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200"><div class="container mx-auto px-4"><div class="flex items-center justify-between h-16"><a class="text-xl font-heading font-bold text-gray-900 hover:text-primary transition-colors" href="/">John Hentrich</a><nav class="hidden md:flex items-center space-x-8"><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/">Home</a><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/about/">About</a><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/projects/">Projects</a><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/resume/">Resume</a><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/other/">Other</a><a class="font-medium uppercase tracking-wide text-sm transition-colors text-gray-600 hover:text-primary" href="/contact/">Contact</a></nav></div></div></header><main class="container mx-auto px-4 py-8 lg:py-16"><div class="max-w-4xl mx-auto"><article class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"><header class="p-8 lg:p-12 border-b border-gray-100"><div class="flex items-center gap-3 mb-4"><span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Technical</span></div><h1 class="text-3xl lg:text-4xl font-heading font-bold text-gray-900 mb-4">Building Analytics Infrastructure for Connected Vehicles</h1><p class="text-lg text-gray-600 mb-6">How we built a scalable analytics infrastructure to process millions of vehicle data points and generate actionable insights for Ford&#x27;s connected services.</p><div class="flex flex-wrap items-center gap-6 text-sm text-gray-500"><div class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>January 14, 2024</div><div class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>9<!-- --> min read</div><div class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>1636<!-- --> words</div></div><div class="flex flex-wrap gap-2 mt-6"><span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">#<!-- -->analytics</span><span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">#<!-- -->infrastructure</span><span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">#<!-- -->automotive</span><span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">#<!-- -->data engineering</span></div></header><div class="p-8 lg:p-12"><div class="prose prose-lg max-w-none"><h1>Building Analytics Infrastructure for Connected Vehicles</h1>
+<p>When Ford decided to transform from a traditional automaker into a technology company, one of the biggest challenges was building the data infrastructure to support millions of connected vehicles. Over the past year, I&#x27;ve been leading the analytics infrastructure development for Ford&#x27;s connected services platform. Here&#x27;s how we built a system that processes over 10 million data points daily and turns them into actionable business insights.</p>
+<h2>The Challenge: Scale and Real-Time Processing</h2>
+<p>Connected vehicles generate an enormous amount of data:</p>
+<ul>
+<li><strong>Location data</strong>: GPS coordinates every 30 seconds</li>
+<li><strong>Vehicle telemetry</strong>: Engine diagnostics, fuel consumption, battery status</li>
+<li><strong>User interactions</strong>: Feature usage, app interactions, preferences</li>
+<li><strong>Environmental data</strong>: Weather, traffic, road conditions</li>
+</ul>
+<h3>Initial Requirements</h3>
+<p>When we started, the requirements seemed straightforward:</p>
+<ol>
+<li><strong>Process real-time data</strong> from 500K+ connected vehicles</li>
+<li><strong>Store historical data</strong> for trend analysis and machine learning</li>
+<li><strong>Generate insights</strong> for business teams and customer features</li>
+<li><strong>Ensure data privacy</strong> and comply with automotive regulations</li>
+<li><strong>Scale to millions</strong> of vehicles over the next 3 years</li>
+</ol>
+<p>What we quickly learned was that automotive data has unique challenges compared to typical web analytics.</p>
+<h2>Architecture Overview</h2>
+<p>After evaluating several approaches, we settled on a cloud-native architecture using Google Cloud Platform:</p>
+<pre><code class="language-mermaid">graph TD
+    A[Vehicle Fleet] --&gt;|Telemetry| B[API Gateway]
+    B --&gt; C[Pub/Sub Topics]
+    C --&gt; D[Dataflow Pipeline]
+    D --&gt; E[BigQuery Data Warehouse]
+    D --&gt; F[Cloud Storage]
+    C --&gt; G[Real-time Processing]
+    G --&gt; H[Firestore]
+    E --&gt; I[Analytics Tools]
+    E --&gt; J[ML Pipelines]
+    H --&gt; K[Mobile Apps]
+</code></pre>
+<h3>Key Components</h3>
+<p><strong>1. Data Ingestion Layer</strong></p>
+<ul>
+<li>Cloud Pub/Sub for reliable message queuing</li>
+<li>API Gateway for authentication and rate limiting</li>
+<li>Protocol Buffers for efficient data serialization</li>
+</ul>
+<p><strong>2. Stream Processing</strong></p>
+<ul>
+<li>Dataflow (Apache Beam) for real-time ETL</li>
+<li>Custom processing logic for data validation and enrichment</li>
+<li>Dead letter queues for error handling</li>
+</ul>
+<p><strong>3. Storage Layer</strong></p>
+<ul>
+<li>BigQuery for analytics workloads</li>
+<li>Cloud Storage for raw data archiving</li>
+<li>Firestore for real-time application data</li>
+</ul>
+<p><strong>4. Analytics and ML</strong></p>
+<ul>
+<li>Vertex AI for machine learning pipelines</li>
+<li>Looker Studio for business intelligence</li>
+<li>Custom dashboards for operational monitoring</li>
+</ul>
+<h2>Technical Implementation</h2>
+<h3>Data Ingestion Pipeline</h3>
+<p>The first challenge was handling the volume and variety of vehicle data. Vehicles don&#x27;t always have reliable connectivity, so our ingestion system needed to handle:</p>
+<ul>
+<li><strong>Batch uploads</strong> when vehicles reconnect after being offline</li>
+<li><strong>Duplicate detection</strong> when vehicles retry failed transmissions</li>
+<li><strong>Data validation</strong> to ensure quality and completeness</li>
+</ul>
+<pre><code class="language-python"># Simplified version of our ingestion handler
+from google.cloud import pubsub_v1
+import json
+from datetime import datetime
+
+class VehicleDataIngester:
+    def __init__(self):
+        self.publisher = pubsub_v1.PublisherClient()
+        self.topic_path = self.publisher.topic_path(
+            &#x27;ford-analytics&#x27;, &#x27;vehicle-telemetry&#x27;
+        )
+    
+    def process_vehicle_batch(self, vehicle_id, data_points):
+        &quot;&quot;&quot;Process a batch of data points from a vehicle&quot;&quot;&quot;
+        validated_points = []
+        
+        for point in data_points:
+            if self.validate_data_point(point):
+                # Add metadata
+                point[&#x27;ingestion_time&#x27;] = datetime.utcnow().isoformat()
+                point[&#x27;vehicle_id&#x27;] = vehicle_id
+                validated_points.append(point)
+        
+        # Deduplicate based on timestamp and vehicle_id
+        deduplicated = self.deduplicate_points(validated_points)
+        
+        # Publish to Pub/Sub
+        for point in deduplicated:
+            message_data = json.dumps(point).encode(&#x27;utf-8&#x27;)
+            future = self.publisher.publish(
+                self.topic_path, 
+                message_data,
+                vehicle_id=vehicle_id,
+                data_type=point.get(&#x27;type&#x27;, &#x27;telemetry&#x27;)
+            )
+            
+        return len(deduplicated)
+    
+    def validate_data_point(self, point):
+        &quot;&quot;&quot;Validate required fields and data types&quot;&quot;&quot;
+        required_fields = [&#x27;timestamp&#x27;, &#x27;location&#x27;, &#x27;type&#x27;]
+        
+        for field in required_fields:
+            if field not in point:
+                return False
+        
+        # Validate timestamp format
+        try:
+            datetime.fromisoformat(point[&#x27;timestamp&#x27;])
+        except ValueError:
+            return False
+            
+        # Validate location coordinates
+        location = point[&#x27;location&#x27;]
+        if not (-90 &lt;= location.get(&#x27;lat&#x27;, 0) &lt;= 90):
+            return False
+        if not (-180 &lt;= location.get(&#x27;lng&#x27;, 0) &lt;= 180):
+            return False
+            
+        return True
+</code></pre>
+<h3>Real-Time Processing with Dataflow</h3>
+<p>For real-time processing, we built Apache Beam pipelines that run on Dataflow:</p>
+<pre><code class="language-python">import apache_beam as beam
+from apache_beam.options.pipeline_options import PipelineOptions
+
+class VehicleDataProcessor:
+    
+    @staticmethod
+    def enrich_with_context(element):
+        &quot;&quot;&quot;Add contextual information to raw vehicle data&quot;&quot;&quot;
+        # Add weather data
+        weather = WeatherAPI.get_current_weather(
+            element[&#x27;location&#x27;][&#x27;lat&#x27;], 
+            element[&#x27;location&#x27;][&#x27;lng&#x27;]
+        )
+        element[&#x27;weather&#x27;] = weather
+        
+        # Add traffic data
+        traffic = TrafficAPI.get_traffic_conditions(
+            element[&#x27;location&#x27;][&#x27;lat&#x27;], 
+            element[&#x27;location&#x27;][&#x27;lng&#x27;]
+        )
+        element[&#x27;traffic&#x27;] = traffic
+        
+        # Calculate derived metrics
+        if element[&#x27;type&#x27;] == &#x27;engine_data&#x27;:
+            element[&#x27;fuel_efficiency&#x27;] = calculate_efficiency(element)
+        
+        return element
+    
+    @staticmethod
+    def aggregate_trip_data(elements):
+        &quot;&quot;&quot;Aggregate individual data points into trip summaries&quot;&quot;&quot;
+        trips = {}
+        
+        for element in elements:
+            trip_id = element.get(&#x27;trip_id&#x27;)
+            if trip_id not in trips:
+                trips[trip_id] = {
+                    &#x27;start_time&#x27;: element[&#x27;timestamp&#x27;],
+                    &#x27;vehicle_id&#x27;: element[&#x27;vehicle_id&#x27;],
+                    &#x27;data_points&#x27;: []
+                }
+            trips[trip_id][&#x27;data_points&#x27;].append(element)
+        
+        # Calculate trip metrics
+        for trip_id, trip in trips.items():
+            trip[&#x27;duration&#x27;] = calculate_duration(trip[&#x27;data_points&#x27;])
+            trip[&#x27;distance&#x27;] = calculate_distance(trip[&#x27;data_points&#x27;])
+            trip[&#x27;avg_speed&#x27;] = trip[&#x27;distance&#x27;] / trip[&#x27;duration&#x27;]
+            
+        return trips.values()
+
+def run_pipeline():
+    options = PipelineOptions([
+        &#x27;--project=ford-analytics&#x27;,
+        &#x27;--region=us-central1&#x27;,
+        &#x27;--runner=DataflowRunner&#x27;,
+        &#x27;--streaming=true&#x27;
+    ])
+    
+    with beam.Pipeline(options=options) as pipeline:
+        (pipeline
+         | &#x27;Read from Pub/Sub&#x27; &gt;&gt; beam.io.ReadFromPubSub(
+             subscription=&#x27;projects/ford-analytics/subscriptions/vehicle-data&#x27;
+         )
+         | &#x27;Parse JSON&#x27; &gt;&gt; beam.Map(json.loads)
+         | &#x27;Enrich Data&#x27; &gt;&gt; beam.Map(VehicleDataProcessor.enrich_with_context)
+         | &#x27;Window into Sessions&#x27; &gt;&gt; beam.WindowInto(
+             beam.window.Sessions(gap_size=300)  # 5-minute gaps end trips
+         )
+         | &#x27;Group by Vehicle&#x27; &gt;&gt; beam.GroupByKey()
+         | &#x27;Aggregate Trips&#x27; &gt;&gt; beam.Map(VehicleDataProcessor.aggregate_trip_data)
+         | &#x27;Write to BigQuery&#x27; &gt;&gt; beam.io.WriteToBigQuery(
+             table=&#x27;ford-analytics.vehicle_data.trips&#x27;,
+             write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
+         )
+        )
+</code></pre>
+<h3>Data Modeling in BigQuery</h3>
+<p>We designed our BigQuery schema to optimize for both analytical queries and cost:</p>
+<pre><code class="language-sql">-- Main vehicle events table (partitioned by date, clustered by vehicle_id)
+CREATE TABLE `ford-analytics.vehicle_data.events` (
+  event_id STRING NOT NULL,
+  vehicle_id STRING NOT NULL,
+  timestamp TIMESTAMP NOT NULL,
+  event_type STRING NOT NULL,
+  location GEOGRAPHY,
+  
+  -- Vehicle telemetry (nested for efficiency)
+  engine_data STRUCT&lt;
+    rpm INT64,
+    fuel_level FLOAT64,
+    engine_temp FLOAT64,
+    odometer INT64
+  &gt;,
+  
+  -- Environmental context
+  weather STRUCT&lt;
+    temperature FLOAT64,
+    humidity FLOAT64,
+    conditions STRING
+  &gt;,
+  
+  -- User interactions
+  user_action STRUCT&lt;
+    feature_used STRING,
+    interaction_type STRING,
+    duration_seconds INT64
+  &gt;,
+  
+  -- Processing metadata
+  ingestion_time TIMESTAMP,
+  processing_time TIMESTAMP
+)
+PARTITION BY DATE(timestamp)
+CLUSTER BY vehicle_id, event_type;
+
+-- Aggregated trip summaries (for faster analytics)
+CREATE TABLE `ford-analytics.vehicle_data.trip_summaries` (
+  trip_id STRING NOT NULL,
+  vehicle_id STRING NOT NULL,
+  start_time TIMESTAMP NOT NULL,
+  end_time TIMESTAMP NOT NULL,
+  
+  -- Trip metrics
+  distance_miles FLOAT64,
+  duration_minutes INT64,
+  avg_speed_mph FLOAT64,
+  max_speed_mph FLOAT64,
+  
+  -- Efficiency metrics
+  fuel_consumed_gallons FLOAT64,
+  mpg FLOAT64,
+  eco_score INT64,
+  
+  -- Route information
+  start_location GEOGRAPHY,
+  end_location GEOGRAPHY,
+  route_polyline STRING,
+  
+  -- Context
+  weather_conditions ARRAY&lt;STRING&gt;,
+  traffic_incidents INT64
+)
+PARTITION BY DATE(start_time)
+CLUSTER BY vehicle_id;
+</code></pre>
+<h2>Analytics and Business Intelligence</h2>
+<h3>Key Performance Indicators</h3>
+<p>With the infrastructure in place, we built dashboards to track key metrics:</p>
+<p><strong>Vehicle Health Metrics</strong></p>
+<ul>
+<li>Engine diagnostic alert rates</li>
+<li>Predictive maintenance recommendations</li>
+<li>Battery health trends (for electric vehicles)</li>
+</ul>
+<p><strong>User Engagement Metrics</strong></p>
+<ul>
+<li>Feature adoption rates</li>
+<li>Session duration and frequency</li>
+<li>Geographic usage patterns</li>
+</ul>
+<p><strong>Business Metrics</strong></p>
+<ul>
+<li>Service subscription conversion rates</li>
+<li>Customer satisfaction correlation with feature usage</li>
+<li>Revenue attribution to connected services</li>
+</ul>
+<h3>Real-Time Alerting</h3>
+<p>We implemented real-time alerting for critical events:</p>
+<pre><code class="language-python">class VehicleAlertProcessor:
+    def __init__(self):
+        self.alert_rules = [
+            {
+                &#x27;name&#x27;: &#x27;critical_engine_temp&#x27;,
+                &#x27;condition&#x27;: lambda data: data.get(&#x27;engine_temp&#x27;, 0) &gt; 220,
+                &#x27;priority&#x27;: &#x27;high&#x27;,
+                &#x27;notification&#x27;: &#x27;immediate&#x27;
+            },
+            {
+                &#x27;name&#x27;: &#x27;theft_alert&#x27;,
+                &#x27;condition&#x27;: self.detect_unusual_movement,
+                &#x27;priority&#x27;: &#x27;critical&#x27;,
+                &#x27;notification&#x27;: &#x27;immediate&#x27;
+            },
+            {
+                &#x27;name&#x27;: &#x27;maintenance_due&#x27;,
+                &#x27;condition&#x27;: lambda data: data.get(&#x27;odometer&#x27;, 0) % 5000 == 0,
+                &#x27;priority&#x27;: &#x27;medium&#x27;,
+                &#x27;notification&#x27;: &#x27;scheduled&#x27;
+            }
+        ]
+    
+    def process_alerts(self, vehicle_data):
+        alerts = []
+        
+        for rule in self.alert_rules:
+            if rule[&#x27;condition&#x27;](vehicle_data):
+                alert = {
+                    &#x27;vehicle_id&#x27;: vehicle_data[&#x27;vehicle_id&#x27;],
+                    &#x27;alert_type&#x27;: rule[&#x27;name&#x27;],
+                    &#x27;priority&#x27;: rule[&#x27;priority&#x27;],
+                    &#x27;timestamp&#x27;: datetime.utcnow(),
+                    &#x27;data&#x27;: vehicle_data
+                }
+                alerts.append(alert)
+                
+                if rule[&#x27;notification&#x27;] == &#x27;immediate&#x27;:
+                    self.send_immediate_notification(alert)
+        
+        return alerts
+</code></pre>
+<h2>Challenges and Solutions</h2>
+<h3>1. Data Privacy and Compliance</h3>
+<p><strong>Challenge</strong>: Automotive data includes personally identifiable information and location data that requires special handling.</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Implemented data anonymization at ingestion</li>
+<li>Built consent management system</li>
+<li>Added data retention policies</li>
+<li>Created audit trails for compliance</li>
+</ul>
+<h3>2. Scale and Cost Management</h3>
+<p><strong>Challenge</strong>: Processing costs grew linearly with vehicle count, threatening project viability.</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Implemented intelligent data sampling for non-critical metrics</li>
+<li>Used BigQuery clustering and partitioning to reduce query costs</li>
+<li>Built cost monitoring and alerting</li>
+<li>Optimized data pipeline efficiency</li>
+</ul>
+<h3>3. Real-Time vs. Batch Processing</h3>
+<p><strong>Challenge</strong>: Balancing real-time alerts with cost-effective batch processing.</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Created tiered processing: real-time for alerts, near-real-time for dashboards, batch for analytics</li>
+<li>Used Cloud Functions for lightweight real-time processing</li>
+<li>Implemented intelligent routing based on data priority</li>
+</ul>
+<h2>Results and Impact</h2>
+<p>After 12 months of operation, our analytics infrastructure has delivered significant value:</p>
+<h3>Technical Metrics</h3>
+<ul>
+<li><strong>99.9% uptime</strong> for data ingestion</li>
+<li><strong>Sub-2-second latency</strong> for real-time alerts</li>
+<li><strong>10M+ data points</strong> processed daily</li>
+<li><strong>35% cost reduction</strong> compared to initial estimates</li>
+</ul>
+<h3>Business Impact</h3>
+<ul>
+<li><strong>40% improvement</strong> in predictive maintenance accuracy</li>
+<li><strong>25% increase</strong> in customer satisfaction for connected services</li>
+<li><strong>$2M annual savings</strong> from optimized fleet operations</li>
+<li><strong>15% boost</strong> in service subscription rates</li>
+</ul>
+<h2>Lessons Learned</h2>
+<h3>1. Start Simple, Scale Gradually</h3>
+<p>We initially tried to build a comprehensive solution from day one. Starting with a simpler architecture and evolving based on actual usage patterns was much more effective.</p>
+<h3>2. Data Quality is Critical</h3>
+<p>Poor data quality can undermine the entire analytics pipeline. Investing early in validation and monitoring pays dividends.</p>
+<h3>3. Real-Time Isn&#x27;t Always Necessary</h3>
+<p>Not every metric needs real-time processing. Understanding business requirements helps optimize for cost and complexity.</p>
+<h3>4. Privacy by Design</h3>
+<p>Building privacy and compliance into the architecture from the beginning is much easier than retrofitting it later.</p>
+<h2>Future Roadmap</h2>
+<h3>Machine Learning Integration</h3>
+<ul>
+<li>Predictive maintenance models</li>
+<li>Personalized user experience algorithms</li>
+<li>Anomaly detection for security</li>
+</ul>
+<h3>Advanced Analytics</h3>
+<ul>
+<li>Real-time traffic optimization</li>
+<li>Dynamic pricing for services</li>
+<li>Cross-vehicle pattern recognition</li>
+</ul>
+<h3>Edge Computing</h3>
+<ul>
+<li>On-vehicle processing for immediate decisions</li>
+<li>Reduced data transmission costs</li>
+<li>Improved privacy through local processing</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Building analytics infrastructure for connected vehicles requires balancing real-time processing needs with cost constraints, privacy requirements with business value, and technical complexity with operational simplicity.</p>
+<p>The key is to start with clear business objectives, design for scale from the beginning, and iterate based on actual usage patterns. Most importantly, remember that the infrastructure is just the foundation—the real value comes from the insights and actions that the data enables.</p>
+<p><em>Have you worked on similar large-scale analytics projects? I&#x27;d love to hear about your experiences and challenges. Connect with me on <a href="https://linkedin.com/in/johnhentrich">LinkedIn</a> or drop me an <a href="mailto:hello@johnhentrich.com">email</a>.</em></p>
+<hr/>
+<p><em>John Hentrich leads analytics infrastructure development at Ford, focusing on connected vehicle data processing and business intelligence. His 15 years of experience includes scaling data systems and driving growth through analytics at Ford and other technology companies.</em></p></div></div><footer class="p-8 lg:p-12 border-t border-gray-100 bg-gray-50"><div class="flex items-center justify-between"><a class="inline-flex items-center text-primary hover:text-primary-dark font-medium" href="/blog/">← Back to Blog</a><div class="text-sm text-gray-500">By <!-- -->John Hentrich</div></div></footer></article></div></main></div><!--$--><!--/$--><script src="/_next/static/chunks/webpack-bafaaa96bb4da6b0.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n5:I[9665,[],\"OutletBoundary\"]\n7:I[4911,[],\"AsyncMetadataOutlet\"]\n9:I[9665,[],\"ViewportBoundary\"]\nb:I[9665,[],\"MetadataBoundary\"]\nc:\"$Sreact.suspense\"\ne:I[8393,[],\"\"]\n:HL[\"/_next/static/media/630c17af355fa44e-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/css/4668c2ce3aedc0d2.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"static-build\",\"p\":\"\",\"c\":[\"\",\"blog\",\"building-analytics-infrastructure\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"blog\",{\"children\":[[\"slug\",\"building-analytics-infrastructure\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/4668c2ce3aedc0d2.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"__variable_e8ce0c __variable_4f7708\",\"children\":[\"$\",\"body\",null,{\"className\":\"font-sans antialiased bg-gray-50 text-gray-900\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[\"blog\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"slug\",\"building-analytics-infrastructure\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",null,[\"$\",\"$L5\",null,{\"children\":[\"$L6\",[\"$\",\"$L7\",null,{\"promise\":\"$@8\"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$c\",null,{\"fallback\":null,\"children\":\"$Ld\"}]}]}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[9502,[\"874\",\"static/chunks/874-437a265a67d6cfee.js\",\"953\",\"static/chunks/app/blog/%5Bslug%5D/page-1f4356a6f7d08717.js\"],\"PageLayout\"]\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"$Lf\",null,{\"currentPage\":\"blog\",\"children\":[\"$\",\"article\",null,{\"className\":\"bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden\",\"children\":[[\"$\",\"header\",null,{\"className\":\"p-8 lg:p-12 border-b border-gray-100\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-3 mb-4\",\"children\":[[\"$\",\"span\",null,{\"className\":\"px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium\",\"children\":\"Technical\"}],false]}],[\"$\",\"h1\",null,{\"className\":\"text-3xl lg:text-4xl font-heading font-bold text-gray-900 mb-4\",\"children\":\"Building Analytics Infrastructure for Connected Vehicles\"}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-600 mb-6\",\"children\":\"How we built a scalable analytics infrastructure to process millions of vehicle data points and generate actionable insights for Ford's connected services.\"}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-center gap-6 text-sm text-gray-500\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-2\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\"}]}],\"January 14, 2024\"]}],[\"$\",\"div\",null,{\"className\":\"flex items-center\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-2\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z\"}]}],9,\" min read\"]}],[\"$\",\"div\",null,{\"className\":\"flex items-center\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-2\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z\"}]}],1636,\" words\"]}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mt-6\",\"children\":[[\"$\",\"span\",\"analytics\",{\"className\":\"px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md\",\"children\":[\"#\",\"analytics\"]}],[\"$\",\"span\",\"infrastructure\",{\"className\":\"px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md\",\"children\":[\"#\",\"infrastructure\"]}],[\"$\",\"span\",\"automotive\",{\"className\":\"px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md\",\"children\":[\"#\",\"automotive\"]}],[\"$\",\"span\",\"data engineering\",{\"className\":\"px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md\",\"children\":[\"#\",\"data engineering\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"p-8 lg:p-12\",\"children\":[\"$\",\"div\",null,{\"className\":\"prose prose-lg max-w-none\",\"children\":[[\"$\",\"h1\",\"h1-0\",{\"children\":\"Building Analytics Infrastructure for Connected Vehicles\"}],\"\\n\",[\"$\",\"p\",\"p-0\",{\"children\":\"When Ford decided to transform from a traditional automaker into a technology company, one of the biggest challenges was building the data infrastructure to support millions of connected vehicles. Over the past year, I've been leading the analytics infrastructure development for Ford's connected services platform. Here's how we built a system that processes over 10 million data points daily and turns them into actionable business insights.\"}],\"\\n\",[\"$\",\"h2\",\"h2-0\",{\"children\":\"The Challenge: Scale and Real-Time Processing\"}],\"\\n\",[\"$\",\"p\",\"p-1\",{\"children\":\"Connected vehicles generate an enormous amount of data:\"}],\"\\n\",[\"$\",\"ul\",\"ul-0\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Location data\"}],\": GPS coordinates every 30 seconds\"]}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Vehicle telemetry\"}],\": Engine diagnostics, fuel consumption, battery status\"]}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"User interactions\"}],\": Feature usage, app interactions, preferences\"]}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Environmental data\"}],\": Weather, traffic, road conditions\"]}],\"\\n\"]}],\"\\n\",\"$L10\",\"\\n\",\"$L11\",\"\\n\",\"$L12\",\"\\n\",\"$L13\",\"\\n\",\"$L14\",\"\\n\",\"$L15\",\"\\n\",\"$L16\",\"\\n\",\"$L17\",\"\\n\",\"$L18\",\"\\n\",\"$L19\",\"\\n\",\"$L1a\",\"\\n\",\"$L1b\",\"\\n\",\"$L1c\",\"\\n\",\"$L1d\",\"\\n\",\"$L1e\",\"\\n\",\"$L1f\",\"\\n\",\"$L20\",\"\\n\",\"$L21\",\"\\n\",\"$L22\",\"\\n\",\"$L23\",\"\\n\",\"$L24\",\"\\n\",\"$L25\",\"\\n\",\"$L26\",\"\\n\",\"$L27\",\"\\n\",\"$L28\",\"\\n\",\"$L29\",\"\\n\",\"$L2a\",\"\\n\",\"$L2b\",\"\\n\",\"$L2c\",\"\\n\",\"$L2d\",\"\\n\",\"$L2e\",\"\\n\",\"$L2f\",\"\\n\",\"$L30\",\"\\n\",\"$L31\",\"\\n\",\"$L32\",\"\\n\",\"$L33\",\"\\n\",\"$L34\",\"\\n\",\"$L35\",\"\\n\",\"$L36\",\"\\n\",\"$L37\",\"\\n\",\"$L38\",\"\\n\",\"$L39\",\"\\n\",\"$L3a\",\"\\n\",\"$L3b\",\"\\n\",\"$L3c\",\"\\n\",\"$L3d\",\"\\n\",\"$L3e\",\"\\n\",\"$L3f\",\"\\n\",\"$L40\",\"\\n\",\"$L41\",\"\\n\",\"$L42\",\"\\n\",\"$L43\",\"\\n\",\"$L44\",\"\\n\",\"$L45\",\"\\n\",\"$L46\",\"\\n\",\"$L47\",\"\\n\",\"$L48\",\"\\n\",\"$L49\",\"\\n\",\"$L4a\",\"\\n\",\"$L4b\",\"\\n\",\"$L4c\",\"\\n\",\"$L4d\",\"\\n\",\"$L4e\",\"\\n\",\"$L4f\",\"\\n\",\"$L50\",\"\\n\",\"$L51\",\"\\n\",\"$L52\",\"\\n\",\"$L53\",\"\\n\",\"$L54\",\"\\n\",\"$L55\",\"\\n\",\"$L56\",\"\\n\",\"$L57\",\"\\n\",\"$L58\",\"\\n\",\"$L59\",\"\\n\",\"$L5a\",\"\\n\",\"$L5b\",\"\\n\",\"$L5c\",\"\\n\",\"$L5d\",\"\\n\",\"$L5e\",\"\\n\",\"$L5f\"]}]}],\"$L60\"]}]}]\n"])</script><script>self.__next_f.push([1,"65:I[6874,[\"874\",\"static/chunks/874-437a265a67d6cfee.js\",\"953\",\"static/chunks/app/blog/%5Bslug%5D/page-1f4356a6f7d08717.js\"],\"\"]\n10:[\"$\",\"h3\",\"h3-0\",{\"children\":\"Initial Requirements\"}]\n11:[\"$\",\"p\",\"p-2\",{\"children\":\"When we started, the requirements seemed straightforward:\"}]\n"])</script><script>self.__next_f.push([1,"12:[\"$\",\"ol\",\"ol-0\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Process real-time data\"}],\" from 500K+ connected vehicles\"]}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Store historical data\"}],\" for trend analysis and machine learning\"]}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Generate insights\"}],\" for business teams and customer features\"]}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Ensure data privacy\"}],\" and comply with automotive regulations\"]}],\"\\n\",[\"$\",\"li\",\"li-4\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Scale to millions\"}],\" of vehicles over the next 3 years\"]}],\"\\n\"]}]\n"])</script><script>self.__next_f.push([1,"13:[\"$\",\"p\",\"p-3\",{\"children\":\"What we quickly learned was that automotive data has unique challenges compared to typical web analytics.\"}]\n14:[\"$\",\"h2\",\"h2-1\",{\"children\":\"Architecture Overview\"}]\n15:[\"$\",\"p\",\"p-4\",{\"children\":\"After evaluating several approaches, we settled on a cloud-native architecture using Google Cloud Platform:\"}]\n16:[\"$\",\"pre\",\"pre-0\",{\"children\":[\"$\",\"code\",\"code-0\",{\"className\":\"language-mermaid\",\"children\":\"graph TD\\n    A[Vehicle Fleet] --\u003e|Telemetry| B[API Gateway]\\n    B --\u003e C[Pub/Sub Topics]\\n    C --\u003e D[Dataflow Pipeline]\\n    D --\u003e E[BigQuery Data Warehouse]\\n    D --\u003e F[Cloud Storage]\\n    C --\u003e G[Real-time Processing]\\n    G --\u003e H[Firestore]\\n    E --\u003e I[Analytics Tools]\\n    E --\u003e J[ML Pipelines]\\n    H --\u003e K[Mobile Apps]\\n\"}]}]\n17:[\"$\",\"h3\",\"h3-1\",{\"children\":\"Key Components\"}]\n18:[\"$\",\"p\",\"p-5\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"1. Data Ingestion Layer\"}]}]\n19:[\"$\",\"ul\",\"ul-1\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Cloud Pub/Sub for reliable message queuing\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"API Gateway for authentication and rate limiting\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Protocol Buffers for efficient data serialization\"}],\"\\n\"]}]\n1a:[\"$\",\"p\",\"p-6\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"2. Stream Processing\"}]}]\n1b:[\"$\",\"ul\",\"ul-2\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Dataflow (Apache Beam) for real-time ETL\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Custom processing logic for data validation and enrichment\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Dead letter queues for error handling\"}],\"\\n\"]}]\n1c:[\"$\",\"p\",\"p-7\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"3. Storage Layer\"}]}]\n1d:[\"$\",\"ul\",\"ul-3\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"BigQuery for analytics workloads\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Cloud Storage for raw data archiving\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Firestore for real-time application data\"}],\"\\n\"]}]\n1e:[\"$\",\"p\",\"p-8\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"4. Analytics and"])</script><script>self.__next_f.push([1," ML\"}]}]\n1f:[\"$\",\"ul\",\"ul-4\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Vertex AI for machine learning pipelines\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Looker Studio for business intelligence\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Custom dashboards for operational monitoring\"}],\"\\n\"]}]\n20:[\"$\",\"h2\",\"h2-2\",{\"children\":\"Technical Implementation\"}]\n21:[\"$\",\"h3\",\"h3-2\",{\"children\":\"Data Ingestion Pipeline\"}]\n22:[\"$\",\"p\",\"p-9\",{\"children\":\"The first challenge was handling the volume and variety of vehicle data. Vehicles don't always have reliable connectivity, so our ingestion system needed to handle:\"}]\n23:[\"$\",\"ul\",\"ul-5\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Batch uploads\"}],\" when vehicles reconnect after being offline\"]}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Duplicate detection\"}],\" when vehicles retry failed transmissions\"]}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Data validation\"}],\" to ensure quality and completeness\"]}],\"\\n\"]}]\n61:T7f5,"])</script><script>self.__next_f.push([1,"# Simplified version of our ingestion handler\nfrom google.cloud import pubsub_v1\nimport json\nfrom datetime import datetime\n\nclass VehicleDataIngester:\n    def __init__(self):\n        self.publisher = pubsub_v1.PublisherClient()\n        self.topic_path = self.publisher.topic_path(\n            'ford-analytics', 'vehicle-telemetry'\n        )\n    \n    def process_vehicle_batch(self, vehicle_id, data_points):\n        \"\"\"Process a batch of data points from a vehicle\"\"\"\n        validated_points = []\n        \n        for point in data_points:\n            if self.validate_data_point(point):\n                # Add metadata\n                point['ingestion_time'] = datetime.utcnow().isoformat()\n                point['vehicle_id'] = vehicle_id\n                validated_points.append(point)\n        \n        # Deduplicate based on timestamp and vehicle_id\n        deduplicated = self.deduplicate_points(validated_points)\n        \n        # Publish to Pub/Sub\n        for point in deduplicated:\n            message_data = json.dumps(point).encode('utf-8')\n            future = self.publisher.publish(\n                self.topic_path, \n                message_data,\n                vehicle_id=vehicle_id,\n                data_type=point.get('type', 'telemetry')\n            )\n            \n        return len(deduplicated)\n    \n    def validate_data_point(self, point):\n        \"\"\"Validate required fields and data types\"\"\"\n        required_fields = ['timestamp', 'location', 'type']\n        \n        for field in required_fields:\n            if field not in point:\n                return False\n        \n        # Validate timestamp format\n        try:\n            datetime.fromisoformat(point['timestamp'])\n        except ValueError:\n            return False\n            \n        # Validate location coordinates\n        location = point['location']\n        if not (-90 \u003c= location.get('lat', 0) \u003c= 90):\n            return False\n        if not (-180 \u003c= location.get('lng', 0) \u003c= 180):\n            return False\n            \n        return True\n"])</script><script>self.__next_f.push([1,"24:[\"$\",\"pre\",\"pre-1\",{\"children\":[\"$\",\"code\",\"code-0\",{\"className\":\"language-python\",\"children\":\"$61\"}]}]\n25:[\"$\",\"h3\",\"h3-3\",{\"children\":\"Real-Time Processing with Dataflow\"}]\n26:[\"$\",\"p\",\"p-10\",{\"children\":\"For real-time processing, we built Apache Beam pipelines that run on Dataflow:\"}]\n62:Tac0,"])</script><script>self.__next_f.push([1,"import apache_beam as beam\nfrom apache_beam.options.pipeline_options import PipelineOptions\n\nclass VehicleDataProcessor:\n    \n    @staticmethod\n    def enrich_with_context(element):\n        \"\"\"Add contextual information to raw vehicle data\"\"\"\n        # Add weather data\n        weather = WeatherAPI.get_current_weather(\n            element['location']['lat'], \n            element['location']['lng']\n        )\n        element['weather'] = weather\n        \n        # Add traffic data\n        traffic = TrafficAPI.get_traffic_conditions(\n            element['location']['lat'], \n            element['location']['lng']\n        )\n        element['traffic'] = traffic\n        \n        # Calculate derived metrics\n        if element['type'] == 'engine_data':\n            element['fuel_efficiency'] = calculate_efficiency(element)\n        \n        return element\n    \n    @staticmethod\n    def aggregate_trip_data(elements):\n        \"\"\"Aggregate individual data points into trip summaries\"\"\"\n        trips = {}\n        \n        for element in elements:\n            trip_id = element.get('trip_id')\n            if trip_id not in trips:\n                trips[trip_id] = {\n                    'start_time': element['timestamp'],\n                    'vehicle_id': element['vehicle_id'],\n                    'data_points': []\n                }\n            trips[trip_id]['data_points'].append(element)\n        \n        # Calculate trip metrics\n        for trip_id, trip in trips.items():\n            trip['duration'] = calculate_duration(trip['data_points'])\n            trip['distance'] = calculate_distance(trip['data_points'])\n            trip['avg_speed'] = trip['distance'] / trip['duration']\n            \n        return trips.values()\n\ndef run_pipeline():\n    options = PipelineOptions([\n        '--project=ford-analytics',\n        '--region=us-central1',\n        '--runner=DataflowRunner',\n        '--streaming=true'\n    ])\n    \n    with beam.Pipeline(options=options) as pipeline:\n        (pipeline\n         | 'Read from Pub/Sub' \u003e\u003e beam.io.ReadFromPubSub(\n             subscription='projects/ford-analytics/subscriptions/vehicle-data'\n         )\n         | 'Parse JSON' \u003e\u003e beam.Map(json.loads)\n         | 'Enrich Data' \u003e\u003e beam.Map(VehicleDataProcessor.enrich_with_context)\n         | 'Window into Sessions' \u003e\u003e beam.WindowInto(\n             beam.window.Sessions(gap_size=300)  # 5-minute gaps end trips\n         )\n         | 'Group by Vehicle' \u003e\u003e beam.GroupByKey()\n         | 'Aggregate Trips' \u003e\u003e beam.Map(VehicleDataProcessor.aggregate_trip_data)\n         | 'Write to BigQuery' \u003e\u003e beam.io.WriteToBigQuery(\n             table='ford-analytics.vehicle_data.trips',\n             write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND\n         )\n        )\n"])</script><script>self.__next_f.push([1,"27:[\"$\",\"pre\",\"pre-2\",{\"children\":[\"$\",\"code\",\"code-0\",{\"className\":\"language-python\",\"children\":\"$62\"}]}]\n28:[\"$\",\"h3\",\"h3-4\",{\"children\":\"Data Modeling in BigQuery\"}]\n29:[\"$\",\"p\",\"p-11\",{\"children\":\"We designed our BigQuery schema to optimize for both analytical queries and cost:\"}]\n63:T5f5,"])</script><script>self.__next_f.push([1,"-- Main vehicle events table (partitioned by date, clustered by vehicle_id)\nCREATE TABLE `ford-analytics.vehicle_data.events` (\n  event_id STRING NOT NULL,\n  vehicle_id STRING NOT NULL,\n  timestamp TIMESTAMP NOT NULL,\n  event_type STRING NOT NULL,\n  location GEOGRAPHY,\n  \n  -- Vehicle telemetry (nested for efficiency)\n  engine_data STRUCT\u003c\n    rpm INT64,\n    fuel_level FLOAT64,\n    engine_temp FLOAT64,\n    odometer INT64\n  \u003e,\n  \n  -- Environmental context\n  weather STRUCT\u003c\n    temperature FLOAT64,\n    humidity FLOAT64,\n    conditions STRING\n  \u003e,\n  \n  -- User interactions\n  user_action STRUCT\u003c\n    feature_used STRING,\n    interaction_type STRING,\n    duration_seconds INT64\n  \u003e,\n  \n  -- Processing metadata\n  ingestion_time TIMESTAMP,\n  processing_time TIMESTAMP\n)\nPARTITION BY DATE(timestamp)\nCLUSTER BY vehicle_id, event_type;\n\n-- Aggregated trip summaries (for faster analytics)\nCREATE TABLE `ford-analytics.vehicle_data.trip_summaries` (\n  trip_id STRING NOT NULL,\n  vehicle_id STRING NOT NULL,\n  start_time TIMESTAMP NOT NULL,\n  end_time TIMESTAMP NOT NULL,\n  \n  -- Trip metrics\n  distance_miles FLOAT64,\n  duration_minutes INT64,\n  avg_speed_mph FLOAT64,\n  max_speed_mph FLOAT64,\n  \n  -- Efficiency metrics\n  fuel_consumed_gallons FLOAT64,\n  mpg FLOAT64,\n  eco_score INT64,\n  \n  -- Route information\n  start_location GEOGRAPHY,\n  end_location GEOGRAPHY,\n  route_polyline STRING,\n  \n  -- Context\n  weather_conditions ARRAY\u003cSTRING\u003e,\n  traffic_incidents INT64\n)\nPARTITION BY DATE(start_time)\nCLUSTER BY vehicle_id;\n"])</script><script>self.__next_f.push([1,"2a:[\"$\",\"pre\",\"pre-3\",{\"children\":[\"$\",\"code\",\"code-0\",{\"className\":\"language-sql\",\"children\":\"$63\"}]}]\n2b:[\"$\",\"h2\",\"h2-3\",{\"children\":\"Analytics and Business Intelligence\"}]\n2c:[\"$\",\"h3\",\"h3-5\",{\"children\":\"Key Performance Indicators\"}]\n2d:[\"$\",\"p\",\"p-12\",{\"children\":\"With the infrastructure in place, we built dashboards to track key metrics:\"}]\n2e:[\"$\",\"p\",\"p-13\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"Vehicle Health Metrics\"}]}]\n2f:[\"$\",\"ul\",\"ul-6\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Engine diagnostic alert rates\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Predictive maintenance recommendations\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Battery health trends (for electric vehicles)\"}],\"\\n\"]}]\n30:[\"$\",\"p\",\"p-14\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"User Engagement Metrics\"}]}]\n31:[\"$\",\"ul\",\"ul-7\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Feature adoption rates\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Session duration and frequency\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Geographic usage patterns\"}],\"\\n\"]}]\n32:[\"$\",\"p\",\"p-15\",{\"children\":[\"$\",\"strong\",\"strong-0\",{\"children\":\"Business Metrics\"}]}]\n33:[\"$\",\"ul\",\"ul-8\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Service subscription conversion rates\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Customer satisfaction correlation with feature usage\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Revenue attribution to connected services\"}],\"\\n\"]}]\n34:[\"$\",\"h3\",\"h3-6\",{\"children\":\"Real-Time Alerting\"}]\n35:[\"$\",\"p\",\"p-16\",{\"children\":\"We implemented real-time alerting for critical events:\"}]\n64:T596,"])</script><script>self.__next_f.push([1,"class VehicleAlertProcessor:\n    def __init__(self):\n        self.alert_rules = [\n            {\n                'name': 'critical_engine_temp',\n                'condition': lambda data: data.get('engine_temp', 0) \u003e 220,\n                'priority': 'high',\n                'notification': 'immediate'\n            },\n            {\n                'name': 'theft_alert',\n                'condition': self.detect_unusual_movement,\n                'priority': 'critical',\n                'notification': 'immediate'\n            },\n            {\n                'name': 'maintenance_due',\n                'condition': lambda data: data.get('odometer', 0) % 5000 == 0,\n                'priority': 'medium',\n                'notification': 'scheduled'\n            }\n        ]\n    \n    def process_alerts(self, vehicle_data):\n        alerts = []\n        \n        for rule in self.alert_rules:\n            if rule['condition'](vehicle_data):\n                alert = {\n                    'vehicle_id': vehicle_data['vehicle_id'],\n                    'alert_type': rule['name'],\n                    'priority': rule['priority'],\n                    'timestamp': datetime.utcnow(),\n                    'data': vehicle_data\n                }\n                alerts.append(alert)\n                \n                if rule['notification'] == 'immediate':\n                    self.send_immediate_notification(alert)\n        \n        return alerts\n"])</script><script>self.__next_f.push([1,"36:[\"$\",\"pre\",\"pre-4\",{\"children\":[\"$\",\"code\",\"code-0\",{\"className\":\"language-python\",\"children\":\"$64\"}]}]\n37:[\"$\",\"h2\",\"h2-4\",{\"children\":\"Challenges and Solutions\"}]\n38:[\"$\",\"h3\",\"h3-7\",{\"children\":\"1. Data Privacy and Compliance\"}]\n39:[\"$\",\"p\",\"p-17\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Challenge\"}],\": Automotive data includes personally identifiable information and location data that requires special handling.\"]}]\n3a:[\"$\",\"p\",\"p-18\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Solution\"}],\":\"]}]\n3b:[\"$\",\"ul\",\"ul-9\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Implemented data anonymization at ingestion\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Built consent management system\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Added data retention policies\"}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":\"Created audit trails for compliance\"}],\"\\n\"]}]\n3c:[\"$\",\"h3\",\"h3-8\",{\"children\":\"2. Scale and Cost Management\"}]\n3d:[\"$\",\"p\",\"p-19\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Challenge\"}],\": Processing costs grew linearly with vehicle count, threatening project viability.\"]}]\n3e:[\"$\",\"p\",\"p-20\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Solution\"}],\":\"]}]\n3f:[\"$\",\"ul\",\"ul-10\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Implemented intelligent data sampling for non-critical metrics\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Used BigQuery clustering and partitioning to reduce query costs\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Built cost monitoring and alerting\"}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":\"Optimized data pipeline efficiency\"}],\"\\n\"]}]\n40:[\"$\",\"h3\",\"h3-9\",{\"children\":\"3. Real-Time vs. Batch Processing\"}]\n41:[\"$\",\"p\",\"p-21\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Challenge\"}],\": Balancing real-time alerts with cost-effective batch processing.\"]}]\n42:[\"$\",\"p\",\"p-22\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Solution\"}],\":\"]}]\n43:[\"$\",\"ul\",\"ul-11\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Created tiered processing: real-time for alerts, near-real-time for dashboards, batch fo"])</script><script>self.__next_f.push([1,"r analytics\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Used Cloud Functions for lightweight real-time processing\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Implemented intelligent routing based on data priority\"}],\"\\n\"]}]\n44:[\"$\",\"h2\",\"h2-5\",{\"children\":\"Results and Impact\"}]\n45:[\"$\",\"p\",\"p-23\",{\"children\":\"After 12 months of operation, our analytics infrastructure has delivered significant value:\"}]\n46:[\"$\",\"h3\",\"h3-10\",{\"children\":\"Technical Metrics\"}]\n47:[\"$\",\"ul\",\"ul-12\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"99.9% uptime\"}],\" for data ingestion\"]}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"Sub-2-second latency\"}],\" for real-time alerts\"]}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"10M+ data points\"}],\" processed daily\"]}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"35% cost reduction\"}],\" compared to initial estimates\"]}],\"\\n\"]}]\n48:[\"$\",\"h3\",\"h3-11\",{\"children\":\"Business Impact\"}]\n49:[\"$\",\"ul\",\"ul-13\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"40% improvement\"}],\" in predictive maintenance accuracy\"]}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"25% increase\"}],\" in customer satisfaction for connected services\"]}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"$$2M annual savings\"}],\" from optimized fleet operations\"]}],\"\\n\",[\"$\",\"li\",\"li-3\",{\"children\":[[\"$\",\"strong\",\"strong-0\",{\"children\":\"15% boost\"}],\" in service subscription rates\"]}],\"\\n\"]}]\n4a:[\"$\",\"h2\",\"h2-6\",{\"children\":\"Lessons Learned\"}]\n4b:[\"$\",\"h3\",\"h3-12\",{\"children\":\"1. Start Simple, Scale Gradually\"}]\n4c:[\"$\",\"p\",\"p-24\",{\"children\":\"We initially tried to build a comprehensive solution from day one. Starting with a simpler architecture and evolving based on actual usage patterns was much more effective.\"}]\n4d:[\"$\",\"h3\",\"h3-13\",{\"children\":\"2. Data Quality is Critical\"}]\n4e:[\"$\",\"p\",\"p-25\",{\"children\":\"Poor data quality c"])</script><script>self.__next_f.push([1,"an undermine the entire analytics pipeline. Investing early in validation and monitoring pays dividends.\"}]\n4f:[\"$\",\"h3\",\"h3-14\",{\"children\":\"3. Real-Time Isn't Always Necessary\"}]\n50:[\"$\",\"p\",\"p-26\",{\"children\":\"Not every metric needs real-time processing. Understanding business requirements helps optimize for cost and complexity.\"}]\n51:[\"$\",\"h3\",\"h3-15\",{\"children\":\"4. Privacy by Design\"}]\n52:[\"$\",\"p\",\"p-27\",{\"children\":\"Building privacy and compliance into the architecture from the beginning is much easier than retrofitting it later.\"}]\n53:[\"$\",\"h2\",\"h2-7\",{\"children\":\"Future Roadmap\"}]\n54:[\"$\",\"h3\",\"h3-16\",{\"children\":\"Machine Learning Integration\"}]\n55:[\"$\",\"ul\",\"ul-14\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Predictive maintenance models\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Personalized user experience algorithms\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Anomaly detection for security\"}],\"\\n\"]}]\n56:[\"$\",\"h3\",\"h3-17\",{\"children\":\"Advanced Analytics\"}]\n57:[\"$\",\"ul\",\"ul-15\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"Real-time traffic optimization\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Dynamic pricing for services\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Cross-vehicle pattern recognition\"}],\"\\n\"]}]\n58:[\"$\",\"h3\",\"h3-18\",{\"children\":\"Edge Computing\"}]\n59:[\"$\",\"ul\",\"ul-16\",{\"children\":[\"\\n\",[\"$\",\"li\",\"li-0\",{\"children\":\"On-vehicle processing for immediate decisions\"}],\"\\n\",[\"$\",\"li\",\"li-1\",{\"children\":\"Reduced data transmission costs\"}],\"\\n\",[\"$\",\"li\",\"li-2\",{\"children\":\"Improved privacy through local processing\"}],\"\\n\"]}]\n5a:[\"$\",\"h2\",\"h2-8\",{\"children\":\"Conclusion\"}]\n5b:[\"$\",\"p\",\"p-28\",{\"children\":\"Building analytics infrastructure for connected vehicles requires balancing real-time processing needs with cost constraints, privacy requirements with business value, and technical complexity with operational simplicity.\"}]\n5c:[\"$\",\"p\",\"p-29\",{\"children\":\"The key is to start with clear business objectives, design for scale from the beginning, and iterate based on actual usage patterns. Most importantly, remembe"])</script><script>self.__next_f.push([1,"r that the infrastructure is just the foundation—the real value comes from the insights and actions that the data enables.\"}]\n5d:[\"$\",\"p\",\"p-30\",{\"children\":[\"$\",\"em\",\"em-0\",{\"children\":[\"Have you worked on similar large-scale analytics projects? I'd love to hear about your experiences and challenges. Connect with me on \",[\"$\",\"a\",\"a-0\",{\"href\":\"https://linkedin.com/in/johnhentrich\",\"children\":\"LinkedIn\"}],\" or drop me an \",[\"$\",\"a\",\"a-1\",{\"href\":\"mailto:hello@johnhentrich.com\",\"children\":\"email\"}],\".\"]}]}]\n5e:[\"$\",\"hr\",\"hr-0\",{}]\n5f:[\"$\",\"p\",\"p-31\",{\"children\":[\"$\",\"em\",\"em-0\",{\"children\":\"John Hentrich leads analytics infrastructure development at Ford, focusing on connected vehicle data processing and business intelligence. His 15 years of experience includes scaling data systems and driving growth through analytics at Ford and other technology companies.\"}]}]\n60:[\"$\",\"footer\",null,{\"className\":\"p-8 lg:p-12 border-t border-gray-100 bg-gray-50\",\"children\":[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between\",\"children\":[[\"$\",\"$L65\",null,{\"href\":\"/blog\",\"className\":\"inline-flex items-center text-primary hover:text-primary-dark font-medium\",\"children\":\"← Back to Blog\"}],[\"$\",\"div\",null,{\"className\":\"text-sm text-gray-500\",\"children\":[\"By \",\"John Hentrich\"]}]]}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n6:null\n"])</script><script>self.__next_f.push([1,"66:I[8175,[],\"IconMark\"]\n"])</script><script>self.__next_f.push([1,"8:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"Building Analytics Infrastructure for Connected Vehicles | John Hentrich\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"How we built a scalable analytics infrastructure to process millions of vehicle data points and generate actionable insights for Ford's connected services.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"John Hentrich\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"analytics,infrastructure,automotive,data engineering\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"John Hentrich\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Business Operations \u0026 Growth Strategy Professional\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:url\",\"content\":\"https://johnhentrich.com/\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:site_name\",\"content\":\"John Hentrich\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"10\",{\"name\":\"twitter:title\",\"content\":\"John Hentrich\"}],[\"$\",\"meta\",\"11\",{\"name\":\"twitter:description\",\"content\":\"Business Operations \u0026 Growth Strategy Professional\"}],[\"$\",\"link\",\"12\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}],[\"$\",\"$L66\",\"13\",{}]],\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1,"d:\"$8:metadata\"\n"])</script></body></html>
