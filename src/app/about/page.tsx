@@ -7,7 +7,7 @@ import { PageLayout } from '@/components/template/PageLayout'
 
 export const metadata: Metadata = {
   title: 'About | John Hentrich',
-  description: 'Learn about John Hentrich\'s professional background, experience, and core expertise in business operations and growth strategy.',
+  description: 'John Hentrich\'s professional background and expertise in business operations and growth strategy.',
 }
 
 async function getAboutContent() {
@@ -28,7 +28,7 @@ export default async function AboutPage() {
                 About Me
               </h1>
               <p className="text-lg text-gray-600">
-                Professional background and expertise
+                Background and expertise
               </p>
             </header>
 

@@ -27,7 +27,7 @@ export default function Home() {
                 About Me
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Learn about my professional background, experience, and core expertise in business operations and growth strategy.
+                Professional background and expertise in business operations and growth strategy.
               </p>
             </Link>
 
@@ -46,7 +46,7 @@ export default function Home() {
                 Technical Projects
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Explore my software development, infrastructure, and data science projects across various domains.
+                Software development, infrastructure, and data science projects.
               </p>
             </Link>
 
@@ -65,7 +65,7 @@ export default function Home() {
                 Resume
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                View my professional experience, education, and technical skills in detail.
+                Professional experience, education, and technical skills.
               </p>
             </Link>
           </div>

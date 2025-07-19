@@ -12,17 +12,13 @@ export function Hero() {
         
         <div className="max-w-3xl mx-auto">
           <p className="text-lg text-gray-600 leading-relaxed mb-6">
-            I&apos;m a business operations and growth strategy professional with{' '}
+            Business operations and growth strategy professional with{' '}
             <span className="font-semibold text-gray-900">15 years of experience</span>{' '}
-            in analytics and scaling digital services. Currently helping launch and scale new 
-            connected services at Ford as the automotive industry undergoes digital transformation, 
-            working with an incredible team to deliver software-driven security experiences for 
-            Ford owners.
+            in analytics and digital services. Currently scaling connected services at Ford.
           </p>
           
           <p className="text-gray-600 leading-relaxed">
-            Explore my background, view my technical projects, or connect with me to discuss 
-            opportunities in business operations, growth strategy, and digital transformation.
+            Explore my background, projects, and experience in business operations and growth strategy.
           </p>
         </div>
       </div>

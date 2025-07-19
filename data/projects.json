@@ -5,7 +5,7 @@
       "id": "looker-studio-dashboards",
       "title": "Looker Studio Enterprise Dashboards",
       "slug": "looker-dashboards",
-      "description": "Comprehensive business intelligence dashboards built with Looker Studio, featuring advanced SQL queries, ETL pipelines, and real-time data visualization for executive reporting and operational insights.",
+      "description": "Business intelligence dashboards with advanced SQL, ETL pipelines, and real-time visualization for executive reporting.",
       "technologies": ["Looker Studio", "SQL", "BigQuery", "ETL", "Data Visualization"],
       "category": "Data Science",
       "status": "Active",
@@ -17,10 +17,10 @@
       "demo": null,
       "website": null,
       "highlights": [
-        "Complex SQL queries with window functions and CTEs for data transformation",
-        "Automated ETL pipelines connecting multiple data sources",
+        "Complex SQL queries with window functions and CTEs",
+        "Automated ETL pipelines across multiple data sources",
         "Interactive dashboards with drill-down capabilities",
-        "Real-time KPI monitoring for executive stakeholders",
+        "Real-time KPI monitoring for executives",
         "Custom calculated fields and advanced aggregations"
       ],
       "metrics": {
@@ -34,7 +34,7 @@
       "id": "poker-hand-analyzer",
       "title": "Texas Hold'em Hand Analyzer",
       "slug": "poker-analyzer",
-      "description": "Interactive poker hand analyzer that calculates winning probabilities for Texas Hold'em showdowns. Features random card dealing, hand strength evaluation, and real-time odds calculation using Monte Carlo simulation.",
+      "description": "Interactive poker hand analyzer calculating winning probabilities for Texas Hold'em using Monte Carlo simulation.",
       "technologies": ["JavaScript", "HTML5", "CSS3", "Probability", "Monte Carlo"],
       "category": "Web Development",
       "status": "Active",
@@ -46,11 +46,11 @@
       "demo": null,
       "website": null,
       "highlights": [
-        "Random card dealing algorithm for realistic gameplay",
-        "Monte Carlo simulation for accurate win probability calculation",
-        "Real-time hand strength evaluation and ranking",
-        "Interactive UI for card selection and scenario testing",
-        "Statistical analysis of different starting hands"
+        "Random card dealing algorithm",
+        "Monte Carlo simulation for win probability calculation",
+        "Real-time hand strength evaluation",
+        "Interactive UI for card selection and testing",
+        "Statistical analysis of starting hands"
       ],
       "metrics": {
         "accuracy": "99.9%",
