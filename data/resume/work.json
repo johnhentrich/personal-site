@@ -5,26 +5,96 @@
     "url": "https://www.ford.com",
     "startDate": "2022-01-01",
     "endDate": null,
-    "summary": "Leading growth strategy for Ford's connected security services platform. Developing analytics frameworks to measure product performance and user engagement. Collaborating with engineering teams to implement data-driven product improvements.",
+    "summary": "Driving growth strategy and business analytics for Ford Secure, now available on F-150 and Super Duty in the U.S. and Canada. Leading data-driven initiatives to scale connected security services.",
     "highlights": [
-      "Launched and scaled Ford Secure connected services platform",
-      "Developed comprehensive analytics framework for product performance measurement",
-      "Led cross-functional initiatives driving 40% improvement in user engagement",
+      "Launched and scaled Ford Secure connected services platform across F-150 and Super Duty lineups",
+      "Developed comprehensive analytics framework using PowerBI, Looker Studio, and Google BigQuery",
+      "Led go-to-market strategy and business planning initiatives",
       "Implemented data-driven decision making processes across product teams"
     ]
   },
   {
-    "name": "Previous Companies",
-    "position": "Business Operations & Analytics Roles",
-    "url": "#",
-    "startDate": "2009-01-01",
+    "name": "Ford Motor Company",
+    "position": "Business Operations Manager, Connected Vehicle Services",
+    "url": "https://www.ford.com",
+    "startDate": "2020-01-01",
     "endDate": "2022-01-01",
-    "summary": "13+ years of progressive experience in business operations, analytics, and growth strategy across technology and automotive sectors.",
+    "summary": "Managed business operations for Ford's connected vehicle services platform, focusing on financial modeling, business planning, and analytics infrastructure development.",
     "highlights": [
-      "Scaled digital services and platforms across multiple organizations",
-      "Implemented business intelligence and analytics solutions",
-      "Led operational excellence initiatives and process optimization",
-      "Developed growth strategies for digital products and services"
+      "Built financial models and business planning frameworks for connected services",
+      "Developed analytics infrastructure using Google Cloud Platform and BigQuery",
+      "Implemented PowerBI dashboards and Looker Studio reporting solutions",
+      "Managed operations across multiple connected vehicle service offerings"
+    ]
+  },
+  {
+    "name": "Ford Motor Company",
+    "position": "Product Manager, Mobility Services",
+    "url": "https://www.ford.com",
+    "startDate": "2018-01-01",
+    "endDate": "2020-01-01",
+    "summary": "Led product management for Ford's mobility services initiatives, focusing on product analytics, user experience optimization, and data-driven product development.",
+    "highlights": [
+      "Managed product development lifecycle for mobility service offerings",
+      "Implemented product analytics using Amplitude and Google BigQuery",
+      "Led cross-functional teams to deliver user-centered mobility solutions",
+      "Developed SQL-based analytics and reporting frameworks"
+    ]
+  },
+  {
+    "name": "Ford Motor Company",
+    "position": "Manager, Corporate Strategy",
+    "url": "https://www.ford.com",
+    "startDate": "2016-01-01",
+    "endDate": "2018-01-01",
+    "summary": "Managed strategic planning initiatives and corporate development activities, including business valuation, due diligence, and financial modeling for strategic investments.",
+    "highlights": [
+      "Led strategic planning and business valuation projects",
+      "Conducted due diligence for potential acquisitions and partnerships",
+      "Developed comprehensive financial models for strategic initiatives",
+      "Supported executive decision-making with data-driven analysis"
+    ]
+  },
+  {
+    "name": "Vantage Point Advisors",
+    "position": "Associate, Business Valuation",
+    "url": "#",
+    "startDate": "2012-01-01",
+    "endDate": "2015-01-01",
+    "summary": "Provided business valuation services and financial analysis for middle-market companies across various industries, developing expertise in financial modeling and business analysis.",
+    "highlights": [
+      "Conducted business valuations for M&A transactions and strategic planning",
+      "Developed complex financial models and business analysis frameworks",
+      "Analyzed financial performance and market dynamics across multiple industries",
+      "Prepared valuation reports and recommendations for executive leadership"
+    ]
+  },
+  {
+    "name": "Cabrillo Advisors",
+    "position": "Analyst, Business Valuation",
+    "url": "#",
+    "startDate": "2011-01-01",
+    "endDate": "2012-01-01",
+    "summary": "Performed financial analysis and business valuation work, building foundational skills in financial modeling, business analysis, and valuation methodologies.",
+    "highlights": [
+      "Conducted financial analysis and business valuations for client engagements",
+      "Built financial models and performed market research and analysis",
+      "Supported senior analysts in complex valuation projects",
+      "Developed expertise in valuation methodologies and financial analysis"
+    ]
+  },
+  {
+    "name": "BeyondTrust",
+    "position": "Associate, Corporate Development",
+    "url": "https://www.beyondtrust.com",
+    "startDate": "2009-01-01",
+    "endDate": "2010-01-01",
+    "summary": "Supported corporate development activities at enterprise software company, gaining experience in product marketing, product management, and sales operations.",
+    "highlights": [
+      "Supported corporate development and strategic planning initiatives",
+      "Contributed to product marketing and product management activities",
+      "Assisted with sales operations and business development projects",
+      "Gained foundational experience in enterprise software industry"
     ]
   }
 ]
