@@ -215,4 +215,4 @@ Scaling digital services in established industries requires balancing innovation
 
 ---
 
-*John Hentrich is a Strategy and Growth Manager at Ford, specializing in scaling connected services and digital transformation. Connect with him on [LinkedIn](https://linkedin.com/in/johnhentrich) or reach out via [email](mailto:john.hentrich@gmail.com).*
+*John Hentrich is a Strategy and Growth Manager at Ford, specializing in scaling connected services and digital transformation. Connect with him on [LinkedIn](https://linkedin.com/in/johnhentrich) or reach out via [email](mailto:hello@johnhentrich.com).*

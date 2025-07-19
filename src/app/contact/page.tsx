@@ -65,8 +65,8 @@ export default function ContactPage() {
             }
             title="Email"
             description="Best way to reach me for professional inquiries and business discussions."
-            link="mailto:john.hentrich@gmail.com"
-            linkText="john.hentrich@gmail.com"
+            link="mailto:hello@johnhentrich.com"
+            linkText="hello@johnhentrich.com"
           />
 
           <ContactMethod

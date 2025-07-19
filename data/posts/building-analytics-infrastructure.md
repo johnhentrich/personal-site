@@ -465,8 +465,8 @@ Building analytics infrastructure for connected vehicles requires balancing real
 
 The key is to start with clear business objectives, design for scale from the beginning, and iterate based on actual usage patterns. Most importantly, remember that the infrastructure is just the foundation—the real value comes from the insights and actions that the data enables.
 
-*Have you worked on similar large-scale analytics projects? I'd love to hear about your experiences and challenges. Connect with me on [LinkedIn](https://linkedin.com/in/johnhentrich) or drop me an [email](mailto:john.hentrich@gmail.com).*
+*Have you worked on similar large-scale analytics projects? I'd love to hear about your experiences and challenges. Connect with me on [LinkedIn](https://linkedin.com/in/johnhentrich) or drop me an [email](mailto:hello@johnhentrich.com).*
 
 ---
 
-*John Hentrich leads analytics infrastructure development at Ford, focusing on connected vehicle data processing and business intelligence. He has 15 years of experience in scaling data systems and driving growth through analytics.*
+*John Hentrich leads analytics infrastructure development at Ford, focusing on connected vehicle data processing and business intelligence. His 15 years of experience includes scaling data systems and driving growth through analytics at Ford and other technology companies.*
