@@ -62,8 +62,8 @@ export default async function AboutPage() {
                   ),
                   li: ({ children }) => (
                     <li className="text-gray-700 leading-relaxed flex items-start">
-                      <span className="text-primary mr-3 mt-2">•</span>
-                      <span>{children}</span>
+                      <span className="text-primary mr-2 mt-1.5 flex-shrink-0">•</span>
+                      <span className="flex-1">{children}</span>
                     </li>
                   ),
                   strong: ({ children }) => (

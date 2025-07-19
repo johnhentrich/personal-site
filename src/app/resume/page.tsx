@@ -103,10 +103,13 @@ function SkillBar({ skill }: { skill: Skill }) {
         <span className="text-sm font-medium text-gray-700">{skill.title}</span>
         <span className="text-xs text-gray-500">{skill.competency}/5</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-2">
+      <div className="w-full bg-gray-200 rounded-full h-2.5">
         <div 
-          className="bg-gradient-to-r from-primary to-primary-light h-2 rounded-full transition-all duration-500"
-          style={{ width: `${percentage}%` }}
+          className="bg-gradient-to-r from-primary to-primary-light h-2.5 rounded-full transition-all duration-1000 ease-out"
+          style={{ 
+            width: `${percentage}%`,
+            animationDelay: '0.2s'
+          }}
         ></div>
       </div>
     </div>

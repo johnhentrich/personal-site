@@ -2,6 +2,35 @@
   "featured": [],
   "other": [
     {
+      "id": "looker-studio-dashboards",
+      "title": "Looker Studio Enterprise Dashboards",
+      "slug": "looker-dashboards",
+      "description": "Comprehensive business intelligence dashboards built with Looker Studio, featuring advanced SQL queries, ETL pipelines, and real-time data visualization for executive reporting and operational insights.",
+      "technologies": ["Looker Studio", "SQL", "BigQuery", "ETL", "Data Visualization"],
+      "category": "Data Science",
+      "status": "Active",
+      "startDate": "2023-06-01",
+      "endDate": null,
+      "image": null,
+      "gallery": [],
+      "github": null,
+      "demo": null,
+      "website": null,
+      "highlights": [
+        "Complex SQL queries with window functions and CTEs for data transformation",
+        "Automated ETL pipelines connecting multiple data sources",
+        "Interactive dashboards with drill-down capabilities",
+        "Real-time KPI monitoring for executive stakeholders",
+        "Custom calculated fields and advanced aggregations"
+      ],
+      "metrics": {
+        "dashboards": "15+",
+        "dataSources": "8",
+        "kpis": "50+",
+        "users": "200+"
+      }
+    },
+    {
       "id": "poker-hand-analyzer",
       "title": "Texas Hold'em Hand Analyzer",
       "slug": "poker-analyzer",
