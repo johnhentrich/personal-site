@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Business & Strategy",
+    "skills": [
+      {
+        "title": "Growth Strategy",
+        "competency": 5
+      },
+      {
+        "title": "Business Operations",
+        "competency": 5
+      },
+      {
+        "title": "Product Analytics",
+        "competency": 5
+      },
+      {
+        "title": "Digital Transformation",
+        "competency": 4
+      },
+      {
+        "title": "Project Management",
+        "competency": 4
+      }
+    ]
+  },
+  {
+    "title": "Technical Skills",
+    "skills": [
+      {
+        "title": "SQL & Database Management",
+        "competency": 4
+      },
+      {
+        "title": "PowerBI & Looker Studio",
+        "competency": 4
+      },
+      {
+        "title": "Google Cloud Platform",
+        "competency": 3
+      },
+      {
+        "title": "Python & Data Analysis",
+        "competency": 3
+      },
+      {
+        "title": "JavaScript & Web Development",
+        "competency": 3
+      }
+    ]
+  },
+  {
+    "title": "Leadership & Communication",
+    "skills": [
+      {
+        "title": "Cross-functional Leadership",
+        "competency": 5
+      },
+      {
+        "title": "Strategic Communication",
+        "competency": 5
+      },
+      {
+        "title": "Data Storytelling",
+        "competency": 4
+      },
+      {
+        "title": "Stakeholder Management",
+        "competency": 4
+      }
+    ]
+  }
+]

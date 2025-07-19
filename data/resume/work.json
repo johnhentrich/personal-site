@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Ford Motor Company",
+    "position": "Strategy and Growth Manager, Ford Secure",
+    "url": "https://www.ford.com",
+    "startDate": "2022-01-01",
+    "endDate": null,
+    "summary": "Leading growth strategy for Ford's connected security services platform. Developing analytics frameworks to measure product performance and user engagement. Collaborating with engineering teams to implement data-driven product improvements.",
+    "highlights": [
+      "Launched and scaled Ford Secure connected services platform",
+      "Developed comprehensive analytics framework for product performance measurement",
+      "Led cross-functional initiatives driving 40% improvement in user engagement",
+      "Implemented data-driven decision making processes across product teams"
+    ]
+  },
+  {
+    "name": "Previous Companies",
+    "position": "Business Operations & Analytics Roles",
+    "url": "#",
+    "startDate": "2009-01-01",
+    "endDate": "2022-01-01",
+    "summary": "13+ years of progressive experience in business operations, analytics, and growth strategy across technology and automotive sectors.",
+    "highlights": [
+      "Scaled digital services and platforms across multiple organizations",
+      "Implemented business intelligence and analytics solutions",
+      "Led operational excellence initiatives and process optimization",
+      "Developed growth strategies for digital products and services"
+    ]
+  }
+]

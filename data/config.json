@@ -1,0 +1,81 @@
+{
+  "site": {
+    "title": "John Hentrich",
+    "description": "Business Operations & Growth Strategy Professional with 15 years of experience in analytics and scaling digital services.",
+    "url": "https://johnhentrich.com",
+    "author": {
+      "name": "John Hentrich",
+      "email": "john.hentrich@gmail.com",
+      "bio": "Business Operations & Growth Strategy Professional at Ford, specializing in analytics and scaling digital services.",
+      "location": "San Diego, California",
+      "twitter": "@johnhentrich",
+      "linkedin": "https://www.linkedin.com/in/johnhentrich",
+      "github": "https://github.com/johnhentrich"
+    }
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/",
+      "description": "Welcome page and professional introduction"
+    },
+    {
+      "label": "About",
+      "href": "/about",
+      "description": "Professional background and expertise"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "description": "Technical projects and portfolio"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog",
+      "description": "Thoughts on business, technology, and growth"
+    },
+    {
+      "label": "Resume",
+      "href": "/resume",
+      "description": "Professional experience and skills"
+    },
+    {
+      "label": "Other",
+      "href": "/other",
+      "description": "Personal interests and hobbies"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact",
+      "description": "Get in touch for opportunities"
+    }
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/johnhentrich",
+    "github": "https://github.com/johnhentrich",
+    "email": "john.hentrich@gmail.com",
+    "website": "https://johnhentrich.com"
+  },
+  "features": {
+    "blog": true,
+    "projects": true,
+    "resume": true,
+    "analytics": false,
+    "newsletter": false,
+    "darkMode": true
+  },
+  "seo": {
+    "keywords": [
+      "business operations",
+      "growth strategy",
+      "analytics",
+      "Ford",
+      "digital transformation",
+      "data science",
+      "product management",
+      "scaling services"
+    ],
+    "ogImage": "/images/og-image.jpg",
+    "twitterCard": "summary_large_image"
+  }
+}
