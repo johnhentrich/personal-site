@@ -1,154 +1,145 @@
 {
   "featured": [
     {
-      "id": "homelab-infrastructure",
-      "title": "Personal Homelab & Infrastructure",
-      "slug": "homelab-infrastructure",
-      "description": "Comprehensive homelab setup featuring virtualization, containerization, and network management. Built using Proxmox for VM orchestration, Docker for containerized services, and pfSense for advanced network security and routing.",
-      "technologies": ["Proxmox", "Docker", "pfSense", "Linux", "Networking"],
-      "category": "Infrastructure",
+      "id": "enterprise-data-pipeline",
+      "title": "Enterprise Data Pipeline & Analytics",
+      "slug": "data-pipeline",
+      "description": "Scalable data processing pipeline for automotive analytics, handling telematics data from connected vehicles. Processes real-time streaming data for business intelligence and operational insights using modern data stack technologies.",
+      "technologies": ["Apache Kafka", "Apache Spark", "Python", "PostgreSQL", "Docker", "Kubernetes"],
+      "category": "Data Science",
       "status": "Active",
-      "startDate": "2023-01-01",
+      "startDate": "2023-06-01",
       "endDate": null,
-      "image": "/images/projects/homelab.png",
-      "gallery": [
-        "/images/projects/homelab/dashboard.png",
-        "/images/projects/homelab/network-diagram.png"
-      ],
+      "image": null,
+      "gallery": [],
       "github": null,
       "demo": null,
       "website": null,
       "highlights": [
-        "Proxmox-based virtualization cluster with high availability",
-        "Docker Swarm for container orchestration",
-        "pfSense firewall with VPN and intrusion detection",
-        "Automated backup and monitoring systems"
+        "Real-time data ingestion from 10,000+ connected vehicles",
+        "Automated data quality validation and anomaly detection",
+        "Scalable microservices architecture with fault tolerance",
+        "Advanced analytics for predictive maintenance insights"
       ],
       "metrics": {
-        "uptime": "99.8%",
-        "services": 15,
-        "containers": 25,
-        "storage": "8TB"
+        "dataVolume": "50TB+",
+        "throughput": "1M events/min",
+        "uptime": "99.95%",
+        "latency": "< 100ms"
       }
     },
     {
-      "id": "data-visualization-platform",
-      "title": "Business Analytics Dashboard",
-      "slug": "analytics-dashboard",
-      "description": "Full-stack web application for visualizing business metrics and KPIs. Features real-time data processing, interactive charts, and automated reporting capabilities using modern web technologies.",
-      "technologies": ["React", "Node.js", "PostgreSQL", "D3.js", "Docker"],
+      "id": "customer-segmentation-platform",
+      "title": "Customer Segmentation & Growth Platform",
+      "slug": "customer-platform",
+      "description": "Advanced customer analytics platform for automotive services, leveraging machine learning to identify growth opportunities and optimize customer engagement strategies across digital touchpoints.",
+      "technologies": ["Python", "TensorFlow", "React", "Node.js", "MongoDB", "AWS"],
       "category": "Web Development",
       "status": "Completed",
-      "startDate": "2023-06-01",
-      "endDate": "2023-12-01",
-      "image": "/images/projects/analytics.png",
-      "gallery": [
-        "/images/projects/analytics/dashboard.png",
-        "/images/projects/analytics/charts.png"
-      ],
+      "startDate": "2023-01-01",
+      "endDate": "2023-08-01",
+      "image": null,
+      "gallery": [],
       "github": null,
       "demo": null,
       "website": null,
       "highlights": [
-        "Real-time data visualization with D3.js",
-        "RESTful API with Node.js and Express",
-        "Responsive design with mobile-first approach",
-        "Automated report generation and email distribution"
+        "ML-driven customer segmentation with 95% accuracy",
+        "Real-time personalization engine for digital experiences",
+        "A/B testing framework for growth optimization",
+        "Executive dashboard with actionable business insights"
       ],
       "metrics": {
-        "users": "50+",
-        "dataPoints": "1M+",
-        "reports": "200+",
-        "performance": "< 2s load"
+        "customers": "500K+",
+        "conversionLift": "23%",
+        "engagementIncrease": "45%",
+        "revenueImpact": "$2.3M"
       }
     },
     {
-      "id": "cloud-migration-project",
-      "title": "Cloud Infrastructure Migration",
-      "slug": "cloud-migration",
-      "description": "Led migration of legacy on-premises infrastructure to Google Cloud Platform. Implemented Infrastructure as Code, CI/CD pipelines, and monitoring solutions for improved scalability and reliability.",
-      "technologies": ["GCP", "Terraform", "Kubernetes", "CI/CD", "Monitoring"],
+      "id": "infrastructure-modernization",
+      "title": "Infrastructure Modernization & DevOps",
+      "slug": "infra-modernization",
+      "description": "Comprehensive infrastructure modernization initiative migrating legacy systems to cloud-native architecture. Implemented Infrastructure as Code, CI/CD pipelines, and automated monitoring for enterprise-scale operations.",
+      "technologies": ["AWS", "Terraform", "Kubernetes", "GitLab CI", "Prometheus", "Grafana"],
       "category": "Cloud",
       "status": "Completed",
-      "startDate": "2022-03-01",
-      "endDate": "2022-10-01",
-      "image": "/images/projects/cloud.png",
-      "gallery": [
-        "/images/projects/cloud/architecture.png",
-        "/images/projects/cloud/monitoring.png"
-      ],
+      "startDate": "2022-09-01",
+      "endDate": "2023-05-01",
+      "image": null,
+      "gallery": [],
       "github": null,
       "demo": null,
       "website": null,
       "highlights": [
-        "Infrastructure as Code with Terraform",
-        "Kubernetes cluster management and scaling",
-        "Comprehensive monitoring and alerting setup",
-        "Cost optimization and security best practices"
+        "Infrastructure as Code for 100+ microservices",
+        "Zero-downtime deployment pipeline with automated rollbacks",
+        "Cost optimization reducing infrastructure spend by 40%",
+        "Security-first architecture with automated compliance checks"
       ],
       "metrics": {
-        "costReduction": "35%",
-        "uptime": "99.95%",
-        "deploymentTime": "80% faster",
-        "services": 12
+        "costReduction": "40%",
+        "deploymentFrequency": "10x faster",
+        "mttr": "85% reduction",
+        "availability": "99.99%"
       }
     }
   ],
   "other": [
     {
-      "id": "machine-learning-predictor",
-      "title": "Predictive Analytics Engine",
-      "slug": "ml-predictor",
-      "description": "Machine learning system for forecasting business metrics and identifying trends. Implements multiple algorithms including regression, time series analysis, and ensemble methods for accurate predictions.",
-      "technologies": ["Python", "scikit-learn", "pandas", "FastAPI", "PostgreSQL"],
+      "id": "business-intelligence-suite",
+      "title": "Executive Business Intelligence Suite",
+      "slug": "bi-suite",
+      "description": "Comprehensive business intelligence platform providing real-time insights across operations, finance, and customer metrics. Features automated reporting, predictive analytics, and executive dashboards for data-driven decision making.",
+      "technologies": ["Power BI", "Python", "SQL Server", "Azure", "DAX", "Power Query"],
       "category": "Data Science",
       "status": "Active",
       "startDate": "2023-03-01",
       "endDate": null,
-      "image": "/images/projects/ml.png",
+      "image": null,
       "gallery": [],
       "github": null,
       "demo": null,
       "website": null,
       "highlights": [
-        "Multiple ML algorithms for different prediction scenarios",
-        "Feature engineering and automated model selection",
-        "RESTful API for model serving",
-        "Comprehensive model evaluation and monitoring"
+        "Automated daily executive reporting across 15 business units",
+        "Predictive models for revenue forecasting and risk assessment",
+        "Self-service analytics empowering business users",
+        "Mobile-first dashboards for leadership team"
       ],
       "metrics": {
-        "accuracy": "94%",
-        "models": 8,
-        "predictions": "10K+",
-        "apiCalls": "1M+"
+        "reports": "200+",
+        "users": "150+",
+        "dataRefresh": "15min",
+        "decisionSpeed": "60% faster"
       }
     },
     {
-      "id": "process-automation-suite",
-      "title": "Business Process Automation",
-      "slug": "automation-suite",
-      "description": "Collection of automation scripts and tools for streamlining repetitive business tasks. Includes data extraction, report generation, and workflow automation using Python and various APIs.",
-      "technologies": ["Python", "REST APIs", "Selenium", "Pandas", "Cron"],
+      "id": "process-optimization-engine",
+      "title": "Business Process Optimization Engine",
+      "slug": "process-optimization",
+      "description": "Intelligent automation platform identifying and optimizing business processes across departments. Combines process mining, RPA, and analytics to eliminate inefficiencies and reduce operational costs.",
+      "technologies": ["Python", "UiPath", "Celonis", "REST APIs", "Docker", "Redis"],
       "category": "Automation",
       "status": "Active",
-      "startDate": "2022-01-01",
+      "startDate": "2022-06-01",
       "endDate": null,
-      "image": "/images/projects/automation.png",
+      "image": null,
       "gallery": [],
       "github": null,
       "demo": null,
       "website": null,
       "highlights": [
-        "Automated data extraction from multiple sources",
-        "Scheduled report generation and distribution",
-        "Web scraping for competitive intelligence",
-        "Integration with business systems via APIs"
+        "Process mining analysis identifying $1.2M in cost savings",
+        "Automated workflows reducing manual tasks by 70%",
+        "Real-time process monitoring and optimization alerts",
+        "Integration with 25+ business systems and APIs"
       ],
       "metrics": {
-        "timeSaved": "20 hrs/week",
-        "scripts": 15,
-        "reports": "50+",
-        "accuracy": "99.5%"
+        "costSavings": "$1.2M",
+        "timeReduction": "70%",
+        "processesOptimized": 45,
+        "errorReduction": "90%"
       }
     },
     {
@@ -161,7 +152,7 @@
       "status": "Active",
       "startDate": "2024-01-15",
       "endDate": null,
-      "image": "/images/projects/poker.png",
+      "image": null,
       "gallery": [],
       "github": null,
       "demo": null,
