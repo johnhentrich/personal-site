@@ -58,6 +58,64 @@
         "handCombinations": "1326",
         "responseTime": "< 50ms"
       }
+    },
+    {
+      "id": "ascii-golf",
+      "title": "ASCII Golf",
+      "slug": "ascii-golf",
+      "description": "Web-based golf analytics and simulation tool featuring ASCII art layouts of major PGA Tour courses with real player statistics and Monte Carlo-style simulations.",
+      "technologies": ["Next.js 15", "TypeScript", "Tailwind CSS", "Vitest", "Monte Carlo Simulation"],
+      "category": "Web Development",
+      "status": "Active",
+      "startDate": "2024-02-01",
+      "endDate": null,
+      "image": null,
+      "gallery": [],
+      "github": null,
+      "demo": null,
+      "website": null,
+      "highlights": [
+        "ASCII art layouts of major PGA Tour courses with interactive visualization",
+        "Real PGA Tour player statistics and performance modeling",
+        "Monte Carlo simulation engine with configurable parameters",
+        "Weather conditions and player variability settings",
+        "Comprehensive results analysis with CSV export capabilities"
+      ],
+      "metrics": {
+        "tests": "106+",
+        "courses": "Torrey Pines South",
+        "simulations": "100-10,000 rounds",
+        "players": "PGA Tour roster"
+      }
+    },
+    {
+      "id": "saas-business-model-maker",
+      "title": "SaaS Business Model Maker",
+      "slug": "saas-business-model",
+      "description": "Web-based financial modeling tool for SaaS businesses featuring month-by-month P&L simulation, cap table management, and Option Pricing Method (OPM) valuations.",
+      "technologies": ["Next.js 15", "TypeScript", "Tailwind CSS", "Vitest", "Financial Modeling"],
+      "category": "Web Development",
+      "status": "Active",
+      "startDate": "2024-03-15",
+      "endDate": null,
+      "image": null,
+      "gallery": [],
+      "github": null,
+      "demo": null,
+      "website": null,
+      "highlights": [
+        "Month-by-month P&L simulation with SaaS metrics (MRR, ARR, churn, CAC, LTV)",
+        "Advanced cap table management with multiple preferred classes",
+        "Option Pricing Method (OPM) for post-money valuation allocation",
+        "Interactive charts and downloadable CSV/Excel export",
+        "Scenario analysis with save/load and shareable URL capabilities"
+      ],
+      "metrics": {
+        "projectionPeriod": "36+ months",
+        "scenarios": "Multiple",
+        "exportFormats": "CSV/Excel",
+        "calculations": "Server-side API"
+      }
     }
   ],
   "categories": [
