@@ -31,35 +31,6 @@
       }
     },
     {
-      "id": "poker-hand-analyzer",
-      "title": "Texas Hold'em Hand Analyzer",
-      "slug": "poker-analyzer",
-      "description": "Interactive poker hand analyzer calculating winning probabilities for Texas Hold'em using Monte Carlo simulation.",
-      "technologies": ["JavaScript", "HTML5", "CSS3", "Probability", "Monte Carlo"],
-      "category": "Web Development",
-      "status": "Active",
-      "startDate": "2024-01-15",
-      "endDate": null,
-      "image": null,
-      "gallery": [],
-      "github": "https://github.com/johnhentrich/poker-hand-analyzer",
-      "demo": null,
-      "website": null,
-      "highlights": [
-        "Random card dealing algorithm",
-        "Monte Carlo simulation for win probability calculation",
-        "Real-time hand strength evaluation",
-        "Interactive UI for card selection and testing",
-        "Statistical analysis of starting hands"
-      ],
-      "metrics": {
-        "accuracy": "99.9%",
-        "simulations": "100K+",
-        "handCombinations": "1326",
-        "responseTime": "< 50ms"
-      }
-    },
-    {
       "id": "ascii-golf",
       "title": "ASCII Golf",
       "slug": "ascii-golf",
