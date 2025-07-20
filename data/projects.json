@@ -116,6 +116,64 @@
         "exportFormats": "CSV/Excel",
         "calculations": "Server-side API"
       }
+    },
+    {
+      "id": "texas-holdem-analyzer",
+      "title": "Texas Hold'em Hand Analyzer",
+      "slug": "texas-holdem-analyzer",
+      "description": "Web-based poker analysis tool using Monte Carlo simulation to calculate win/tie/loss rates for Texas Hold'em hands against random opponents with optional community cards.",
+      "technologies": ["Next.js 15", "TypeScript", "Tailwind CSS", "Vitest", "Monte Carlo Simulation"],
+      "category": "Web Development",
+      "status": "Active",
+      "startDate": "2024-01-15",
+      "endDate": null,
+      "image": null,
+      "gallery": [],
+      "github": "https://github.com/jhentrich/texas-holdem-analyzer",
+      "demo": null,
+      "website": null,
+      "highlights": [
+        "Interactive card selection for hole cards and community cards",
+        "Monte Carlo simulation with 10,000+ hands per run",
+        "Real-time win/tie/loss percentage calculations",
+        "Responsive mobile-friendly interface with accessibility features",
+        "Comprehensive testing suite with Vitest and React Testing Library"
+      ],
+      "metrics": {
+        "simulations": "10,000+",
+        "accuracy": "Statistical",
+        "platforms": "Web",
+        "tests": "Comprehensive"
+      }
+    },
+    {
+      "id": "text-to-midi-maker",
+      "title": "Text-to-MIDI Maker",
+      "slug": "text-to-midi-maker",
+      "description": "AI-powered music generation tool that converts natural language prompts into downloadable MIDI files using LLM parsing and multiple musical style options (8-bit, SNES, Windows MIDI).",
+      "technologies": ["Next.js 15", "TypeScript", "Tailwind CSS", "LLM APIs", "MIDI Generation"],
+      "category": "Web Development",
+      "status": "Active",
+      "startDate": "2024-04-01",
+      "endDate": null,
+      "image": null,
+      "gallery": [],
+      "github": "https://github.com/jhentrich/text-to-midi-maker",
+      "demo": null,
+      "website": null,
+      "highlights": [
+        "Natural language music prompt parsing using multiple LLM APIs with fallback",
+        "Interactive parameter review and editing before MIDI generation",
+        "Multiple musical styles: 8-bit, SNES/16-bit, and Windows MIDI",
+        "Secure server-side API key management with rate limiting",
+        "Downloadable MIDI files with optional in-browser playback"
+      ],
+      "metrics": {
+        "apiProviders": "Multiple",
+        "styles": "3+",
+        "formats": "MIDI",
+        "processing": "Async"
+      }
     }
   ],
   "categories": [
