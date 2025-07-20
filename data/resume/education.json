@@ -1,0 +1,29 @@
+[
+  {
+    "institution": "Haas School of Business, UC Berkeley",
+    "degree": "MBA, General Management",
+    "startDate": "2015-01-01",
+    "endDate": "2017-01-01",
+    "logo": "🐻",
+    "color": "blue",
+    "url": "https://haas.berkeley.edu"
+  },
+  {
+    "institution": "University of Pennsylvania",
+    "degree": "MCIT, Computer and Information Sciences",
+    "startDate": "2019-01-01", 
+    "endDate": "2022-01-01",
+    "logo": "🔴",
+    "color": "red",
+    "url": "https://www.upenn.edu"
+  },
+  {
+    "institution": "Dartmouth College",
+    "degree": "BA, Economics",
+    "startDate": "2005-01-01",
+    "endDate": "2009-01-01",
+    "logo": "🌲", 
+    "color": "green",
+    "url": "https://dartmouth.edu"
+  }
+]

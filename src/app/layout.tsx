@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Raleway } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -38,8 +39,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${raleway.variable}`}>
-      <body className="font-sans antialiased bg-gray-50 text-gray-900">
-        {children}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('darkMode');
+                  var isDark = stored !== null ? JSON.parse(stored) : true;
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

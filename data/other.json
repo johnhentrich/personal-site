@@ -1,0 +1,47 @@
+{
+  "currentInterests": {
+    "watching": "Battlestar Galactica",
+    "playing": "Donkey Kong Bonanza, Mario Kart World",
+    "listening": "Pavement, Depeche Mode, Kino, Nation of Languages"
+  },
+  "favoriteGadgets": [
+    {
+      "name": "Roborock Vacuum",
+      "emoji": "🤖"
+    },
+    {
+      "name": "Steam Deck", 
+      "emoji": "🎮"
+    },
+    {
+      "name": "KitchenBoss Sous Vide",
+      "emoji": "🍳"
+    }
+  ],
+  "travel": {
+    "countriesVisited": 7,
+    "description": "Visited 7 countries and counting.",
+    "mapUrl": "https://www.google.com/maps/d/u/0/edit?mid=1ms8A3SDGwsct3ENuw9SkugYzb1LsNUjG&usp=sharing"
+  },
+  "funFacts": [
+    {
+      "emoji": "👨‍👧‍👦",
+      "text": "Dad to two amazing kids who keep life interesting",
+      "background": "bg-gradient-to-br from-blue-50 to-indigo-50"
+    },
+    {
+      "emoji": "🛠️",
+      "text": "Love tinkering with home automation and smart home setups",
+      "background": "bg-gradient-to-br from-green-50 to-emerald-50"
+    },
+    {
+      "emoji": "📊",
+      "text": "Data visualization nerd who finds patterns everywhere",
+      "background": "bg-gradient-to-br from-purple-50 to-violet-50"
+    }
+  ],
+  "personalStats": {
+    "location": "San Diego, CA",
+    "diapersChanged": "∞"
+  }
+}

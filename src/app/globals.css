@@ -10,6 +10,16 @@
   --color-info: #0ea5e9;
 }
 
+.dark {
+  --color-primary: #6ba3c7;
+  --color-primary-light: #8bb5d1;
+  --color-primary-dark: #4a90b8;
+  --color-secondary: #9ca3af;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+}
+
 @theme inline {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-raleway);

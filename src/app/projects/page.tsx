@@ -45,12 +45,12 @@ function ProjectCard({ project }: { project: Project }) {
   const categoryColor = categoryColors[project.category as keyof typeof categoryColors] || 'bg-gray-100 text-gray-800'
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all duration-300 overflow-hidden">
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-xl font-heading font-semibold text-gray-900">
+              <h3 className="text-xl font-heading font-semibold text-gray-900 dark:text-white">
                 {project.title}
               </h3>
               {project.featured && (
@@ -65,15 +65,15 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <p className="text-gray-600 leading-relaxed mb-4">
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
           {project.description}
         </p>
 
         <div className="mb-4">
-          <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Highlights:</h4>
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Key Highlights:</h4>
           <ul className="space-y-1">
             {project.highlights.map((highlight, index) => (
-              <li key={index} className="text-sm text-gray-600 flex items-start">
+              <li key={index} className="text-sm text-gray-600 dark:text-gray-300 flex items-start">
                 <span className="text-primary mr-2 mt-1">•</span>
                 {highlight}
               </li>
@@ -82,12 +82,12 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mb-4">
-          <h4 className="text-sm font-semibold text-gray-900 mb-2">Technologies:</h4>
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Technologies:</h4>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md"
+                className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md"
               >
                 {tech}
               </span>
@@ -96,7 +96,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {(project.github || project.demo) && (
-          <div className="flex gap-3 pt-4 border-t border-gray-100">
+          <div className="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
             {project.github && (
               <a
                 href={project.github}
@@ -134,12 +134,12 @@ export default function ProjectsPage() {
 
   return (
     <PageLayout currentPage="projects">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-l-4 border-l-info p-8 lg:p-12">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 border-l-4 border-l-info p-8 lg:p-12">
         <header className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-white mb-4">
             Technical Projects
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             A collection of software development, infrastructure, and data science projects
             demonstrating technical expertise across various domains.
           </p>
@@ -147,7 +147,7 @@ export default function ProjectsPage() {
 
         {featuredProjects.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-heading font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">
               Featured Projects
             </h2>
             <div className="grid gap-8 md:grid-cols-2">
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
 
         {otherProjects.length > 0 && (
           <section>
-            <h2 className="text-2xl font-heading font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">
               Other Projects
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

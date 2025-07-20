@@ -20,14 +20,14 @@ function ContactMethod({
   linkText: string
 }) {
   return (
-    <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors">
+    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0 p-2 bg-primary/10 rounded-lg">
           {icon}
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-          <p className="text-gray-600 mb-3">{description}</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-3">{description}</p>
           <a 
             href={link}
             className="text-primary hover:text-primary-dark font-medium"
@@ -45,12 +45,12 @@ function ContactMethod({
 export default function ContactPage() {
   return (
     <PageLayout currentPage="contact">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-l-4 border-l-warning p-8 lg:p-12">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 border-l-4 border-l-warning p-8 lg:p-12">
         <header className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-white mb-4">
             Get In Touch
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             I&apos;m always interested in discussing business opportunities, growth strategy, 
             digital transformation, or potential collaborations. Feel free to reach out!
           </p>
@@ -107,39 +107,39 @@ export default function ContactPage() {
         </div>
 
         {/* Professional Focus Areas */}
-        <section className="border-t border-gray-200 pt-12">
-          <h2 className="text-2xl font-heading font-bold text-gray-900 mb-8 text-center">
+        <section className="border-t border-gray-200 dark:border-gray-700 pt-12">
+          <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-8 text-center">
             Areas of Interest
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg">
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Growth Strategy</h3>
-              <p className="text-sm text-gray-600">Scaling digital products and services through data-driven insights</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Growth Strategy</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Scaling digital products and services through data-driven insights</p>
             </div>
 
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg">
+              <div className="w-12 h-12 bg-green-100 dark:bg-green-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Digital Transformation</h3>
-              <p className="text-sm text-gray-600">Modernizing business processes and technology infrastructure</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Digital Transformation</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Modernizing business processes and technology infrastructure</p>
             </div>
 
-            <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-violet-50 rounded-lg">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-lg">
+              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Data & Analytics</h3>
-              <p className="text-sm text-gray-600">Leveraging data to drive business decisions and product improvements</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Data & Analytics</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Leveraging data to drive business decisions and product improvements</p>
             </div>
           </div>
         </section>
