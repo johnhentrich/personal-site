@@ -14,7 +14,8 @@
       "Bash(npm run dev:*)",
       "Bash(git push:*)",
       "Bash(rm:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(node:*)"
     ],
     "deny": []
   }
