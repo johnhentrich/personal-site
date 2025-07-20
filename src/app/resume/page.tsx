@@ -52,7 +52,9 @@ async function getResumeData() {
       skills: JSON.parse(skillsData) as Skills[],
     }
   } catch (error) {
-    console.error('Error loading resume data:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error loading resume data:', error)
+    }
     return {
       work: [],
       education: [],

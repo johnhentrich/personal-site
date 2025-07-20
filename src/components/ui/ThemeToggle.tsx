@@ -6,8 +6,10 @@ export function ThemeToggle() {
   const { isDarkMode, toggleDarkMode } = useTheme()
 
   const handleClick = () => {
-    console.log('ThemeToggle button clicked!')
-    console.log('Current isDarkMode state:', isDarkMode)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('ThemeToggle button clicked!')
+      console.log('Current isDarkMode state:', isDarkMode)
+    }
     
     // Simply call the toggle function - let the hook handle DOM manipulation
     toggleDarkMode()

@@ -14,28 +14,39 @@ export function useDarkMode() {
         
         setIsDarkMode(storedValue)
         
-        // Ensure DOM is synced with the state
-        const html = document.documentElement
-        if (storedValue) {
-          html.classList.add('dark')
-        } else {
-          html.classList.remove('dark')
+        // Only sync DOM if initializer hasn't already done it
+        if (!(window as Window & { __themeInitialized?: boolean }).__themeInitialized) {
+          const html = document.documentElement
+          if (storedValue) {
+            html.classList.add('dark')
+          } else {
+            html.classList.remove('dark')
+          }
         }
         
-        console.log('Initial dark mode setup:', storedValue, 'DOM classes:', html.className)
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Initial dark mode setup:', storedValue, 'DOM classes:', document.documentElement.className)
+        }
       } catch (error) {
-        console.warn('Error reading dark mode from localStorage:', error)
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Error reading dark mode from localStorage:', error)
+        }
         // Default to dark mode on error
         setIsDarkMode(true)
-        document.documentElement.classList.add('dark')
+        if (!(window as Window & { __themeInitialized?: boolean }).__themeInitialized) {
+          document.documentElement.classList.add('dark')
+        }
       }
     }
   }, [])
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode
-    console.log('Toggle clicked - changing from', isDarkMode, 'to', newMode)
-    console.log('Document classes before toggle:', document.documentElement.className)
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Toggle clicked - changing from', isDarkMode, 'to', newMode)
+      console.log('Document classes before toggle:', document.documentElement.className)
+    }
     
     // Update DOM first
     if (typeof window !== 'undefined') {
@@ -46,17 +57,25 @@ export function useDarkMode() {
       
       if (newMode) {
         html.classList.add('dark')
-        console.log('Added dark class, classes now:', html.className)
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Added dark class, classes now:', html.className)
+        }
       } else {
-        console.log('Removed dark class, classes now:', html.className)
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Removed dark class, classes now:', html.className)
+        }
       }
       
       // Update localStorage
       try {
         localStorage.setItem('darkMode', JSON.stringify(newMode))
-        console.log('Saved to localStorage:', newMode)
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Saved to localStorage:', newMode)
+        }
       } catch (error) {
-        console.warn('Error saving to localStorage:', error)
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Error saving to localStorage:', error)
+        }
       }
     }
     

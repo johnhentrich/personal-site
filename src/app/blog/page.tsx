@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { PageLayout } from '@/components/template/PageLayout'
 import { PostSummary, PostFrontmatter } from '@/types'
-import { readFileSync, readdirSync, existsSync } from 'fs'
+import { readFile, readdir } from 'fs/promises'
+import { existsSync } from 'fs'
 import { join, extname } from 'path'
 import matter from 'gray-matter'
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Thoughts on business strategy, digital transformation, and growth in the automotive industry.',
 }
 
-function getPosts(): PostSummary[] {
+async function getPosts(): Promise<PostSummary[]> {
   try {
     const postsDirectory = join(process.cwd(), 'data', 'posts')
     
@@ -19,7 +20,7 @@ function getPosts(): PostSummary[] {
       return []
     }
     
-    const fileNames = readdirSync(postsDirectory)
+    const fileNames = await readdir(postsDirectory)
     const posts: PostSummary[] = []
     
     for (const fileName of fileNames) {
@@ -27,7 +28,7 @@ function getPosts(): PostSummary[] {
       
       try {
         const filePath = join(postsDirectory, fileName)
-        const fileContents = readFileSync(filePath, 'utf8')
+        const fileContents = await readFile(filePath, 'utf8')
         const { data: frontmatter, content } = matter(fileContents)
         
         if (frontmatter.published !== false) {
@@ -39,7 +40,9 @@ function getPosts(): PostSummary[] {
           })
         }
       } catch (error) {
-        console.warn(`Error reading post ${fileName}:`, error)
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`Error reading post ${fileName}:`, error)
+        }
       }
     }
     
@@ -49,7 +52,9 @@ function getPosts(): PostSummary[] {
       return dateB.getTime() - dateA.getTime()
     })
   } catch (error) {
-    console.error('Error reading posts:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error reading posts:', error)
+    }
     return []
   }
 }
@@ -137,8 +142,8 @@ function PostCard({ post }: { post: PostSummary }) {
   )
 }
 
-export default function BlogPage() {
-  const posts = getPosts()
+export default async function BlogPage() {
+  const posts = await getPosts()
   const featuredPosts = posts.filter(post => post.frontmatter.featured)
   const otherPosts = posts.filter(post => !post.frontmatter.featured)
 

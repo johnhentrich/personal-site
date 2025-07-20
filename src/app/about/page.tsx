@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
-import { readFileSync } from 'fs'
+import { readFile } from 'fs/promises'
 import { join } from 'path'
 import matter from 'gray-matter'
 import { PageLayout } from '@/components/template/PageLayout'
@@ -11,10 +11,17 @@ export const metadata: Metadata = {
 }
 
 async function getAboutContent() {
-  const fullPath = join(process.cwd(), 'data', 'about.md')
-  const fileContents = readFileSync(fullPath, 'utf8')
-  const { content } = matter(fileContents)
-  return content
+  try {
+    const fullPath = join(process.cwd(), 'data', 'about.md')
+    const fileContents = await readFile(fullPath, 'utf8')
+    const { content } = matter(fileContents)
+    return content
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Error reading about content:', error)
+    }
+    return 'Content not available at this time.'
+  }
 }
 
 export default async function AboutPage() {

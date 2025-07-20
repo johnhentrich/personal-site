@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import { PageLayout } from '@/components/template/PageLayout'
+import { fetchJsonData } from '@/lib/dataFetcher'
 
 export const metadata: Metadata = {
   title: 'Projects | John Hentrich',
@@ -124,10 +123,15 @@ function ProjectCard({ project }: { project: Project }) {
   )
 }
 
-export default function ProjectsPage() {
-  const fullPath = join(process.cwd(), 'data', 'projects.json')
-  const fileContents = readFileSync(fullPath, 'utf8')
-  const data: ProjectsData = JSON.parse(fileContents)
+export default async function ProjectsPage() {
+  // Fallback data for resilience
+  const fallbackData: ProjectsData = {
+    featured: [],
+    other: [],
+    categories: []
+  }
+  
+  const data = await fetchJsonData<ProjectsData>('projects.json', fallbackData)
   
   const featuredProjects = data.featured
   const otherProjects = data.other

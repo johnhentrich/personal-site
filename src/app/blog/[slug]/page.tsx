@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { readFileSync, readdirSync, existsSync } from 'fs'
+import { readFile, readdir } from 'fs/promises'
+import { existsSync } from 'fs'
 import { join, extname } from 'path'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
@@ -12,7 +13,7 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-function getPost(slug: string): Post | null {
+async function getPost(slug: string): Promise<Post | null> {
   try {
     const postsDirectory = join(process.cwd(), 'data', 'posts')
     
@@ -20,14 +21,14 @@ function getPost(slug: string): Post | null {
       return null
     }
     
-    const fileNames = readdirSync(postsDirectory)
+    const fileNames = await readdir(postsDirectory)
     
     for (const fileName of fileNames) {
       if (extname(fileName) !== '.md') continue
       
       try {
         const filePath = join(postsDirectory, fileName)
-        const fileContents = readFileSync(filePath, 'utf8')
+        const fileContents = await readFile(filePath, 'utf8')
         const { data: frontmatter, content } = matter(fileContents)
         
         if (frontmatter.slug === slug && frontmatter.published !== false) {
@@ -39,20 +40,24 @@ function getPost(slug: string): Post | null {
           }
         }
       } catch (error) {
-        console.warn(`Error reading post ${fileName}:`, error)
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`Error reading post ${fileName}:`, error)
+        }
       }
     }
     
     return null
   } catch (error) {
-    console.error('Error reading posts:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error reading posts:', error)
+    }
     return null
   }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = getPost(slug)
+  const post = await getPost(slug)
   
   if (!post) {
     return {
@@ -75,7 +80,7 @@ export async function generateStaticParams() {
       return []
     }
     
-    const fileNames = readdirSync(postsDirectory)
+    const fileNames = await readdir(postsDirectory)
     const slugs: string[] = []
     
     for (const fileName of fileNames) {
@@ -83,14 +88,16 @@ export async function generateStaticParams() {
       
       try {
         const filePath = join(postsDirectory, fileName)
-        const fileContents = readFileSync(filePath, 'utf8')
+        const fileContents = await readFile(filePath, 'utf8')
         const { data: frontmatter } = matter(fileContents)
         
         if (frontmatter.slug && frontmatter.published !== false) {
           slugs.push(frontmatter.slug)
         }
       } catch (error) {
-        console.warn(`Error reading post ${fileName}:`, error)
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`Error reading post ${fileName}:`, error)
+        }
       }
     }
     
@@ -104,7 +111,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params
-  const post = getPost(slug)
+  const post = await getPost(slug)
   
   if (!post) {
     notFound()

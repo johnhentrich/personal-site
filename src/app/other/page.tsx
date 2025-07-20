@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import { PageLayout } from '@/components/template/PageLayout'
+import { fetchJsonData } from '@/lib/dataFetcher'
 
 export const metadata: Metadata = {
   title: 'Other | John Hentrich',
@@ -44,21 +43,16 @@ interface OtherData {
   personalStats: PersonalStats
 }
 
-function getOtherData(): OtherData {
-  try {
-    const fullPath = join(process.cwd(), 'data', 'other.json')
-    const fileContents = readFileSync(fullPath, 'utf8')
-    return JSON.parse(fileContents)
-  } catch (error) {
-    console.error('Error reading other data:', error)
-    return {
-      currentInterests: { watching: '', playing: '', listening: '' },
-      favoriteGadgets: [],
-      travel: { countriesVisited: 0, description: '', mapUrl: '' },
-      funFacts: [],
-      personalStats: { location: '', diapersChanged: '' }
-    }
+async function getOtherData(): Promise<OtherData> {
+  const fallbackData: OtherData = {
+    currentInterests: { watching: '', playing: '', listening: '' },
+    favoriteGadgets: [],
+    travel: { countriesVisited: 0, description: '', mapUrl: '' },
+    funFacts: [],
+    personalStats: { location: '', diapersChanged: '' }
   }
+  
+  return await fetchJsonData<OtherData>('other.json', fallbackData)
 }
 
 function StatsCounter({ value, label }: { value: string | number; label: string }) {
@@ -70,8 +64,8 @@ function StatsCounter({ value, label }: { value: string | number; label: string 
   )
 }
 
-export default function OtherPage() {
-  const data = getOtherData()
+export default async function OtherPage() {
+  const data = await getOtherData()
   
   // Calculate days since last update (this would be dynamic in a real app)
   const lastUpdate = new Date('2025-07-19')
