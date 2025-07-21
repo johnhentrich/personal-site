@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Raleway } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/contexts/ThemeContext'
-import { DarkModeInitializer } from '@/components/DarkModeInitializer'
+import { ThemeProvider } from '@/contexts/ThemeProvider'
+import { ThemeScript, ThemeNoScript } from '@/components/ThemeScript'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 const inter = Inter({ 
@@ -41,8 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${raleway.variable}`}>
+      <head>
+        <ThemeScript />
+        <ThemeNoScript />
+      </head>
       <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
-        <DarkModeInitializer />
         <ErrorBoundary>
           <ThemeProvider>
             {children}
