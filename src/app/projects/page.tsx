@@ -17,6 +17,7 @@ interface Project {
   image?: string
   github?: string
   demo?: string
+  website?: string
   highlights: string[]
 }
 
@@ -94,8 +95,18 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        {(project.github || project.demo) && (
+        {(project.github || project.demo || project.website) && (
           <div className="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+            {project.website && (
+              <a
+                href={project.website}
+                className="text-sm text-primary hover:text-primary-dark font-medium"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Site →
+              </a>
+            )}
             {project.github && (
               <a
                 href={project.github}
