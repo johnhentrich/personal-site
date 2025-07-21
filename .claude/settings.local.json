@@ -22,7 +22,10 @@
       "Bash(curl:*)",
       "Bash(npx next lint:*)",
       "Bash(gh workflow:*)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "Bash(chmod:*)",
+      "Bash(/tmp/rebase_script.sh:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }
