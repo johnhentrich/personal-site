@@ -18,6 +18,11 @@ npm run deploy   # Deploy to GitHub Pages
 npm run lint     # TypeScript and ESLint validation
 ```
 
+### Build Troubleshooting Commands
+```bash
+npm run build && npm run lint && npm run test:run  # Full validation pipeline
+```
+
 ---
 
 ## 📝 Commit Guidelines
@@ -172,6 +177,25 @@ export default async function PageName() {
 - Async operations for optimal performance
 - Error boundaries preventing cascade failures
 - Comprehensive error handling for edge cases
+
+### Deployment Troubleshooting (Lessons Learned)
+
+**Common Build Failures:**
+1. **JSX Namespace Issues** - Next.js 15 requires `React.JSX.Element` instead of `JSX.Element`
+2. **TypeScript Strict Mode** - Remove unused variables, avoid `as any` type assertions
+3. **ESLint Violations** - Clean up test files, remove unused imports
+
+**Resolution Process:**
+1. Always test build locally first: `npm run build`
+2. Fix TypeScript/ESLint errors before committing
+3. Verify `out/` directory generation with all static assets
+4. Commit fixes to trigger new GitHub Actions deployment
+5. Monitor workflow status in GitHub Actions tab
+
+**Prevention:**
+- Run full validation pipeline before commits: `npm run build && npm run lint && npm run test:run`
+- Set up pre-commit hooks for automatic validation
+- Keep dependencies updated to avoid compatibility issues
 
 ## 🔧 Development Workflows
 

@@ -239,6 +239,28 @@ npm run deploy           # Deploy to GitHub Pages
 2. Set source to "GitHub Actions"
 3. Configure custom domain (optional)
 
+### Build Troubleshooting
+
+If GitHub Pages deployment fails, common issues and solutions:
+
+**TypeScript/ESLint Errors:**
+- JSX namespace issues: Use `React.JSX.Element` instead of `JSX.Element`
+- Unused variables in tests: Remove or prefix with underscore
+- Type assertions: Use proper TypeScript types instead of `as any`
+
+**Build Process:**
+```bash
+npm run build            # Test build locally first
+npm run lint             # Validate TypeScript/ESLint compliance
+npm run test:run         # Ensure all tests pass
+```
+
+**Debug Steps:**
+1. Check local build success with `npm run build`
+2. Verify `out/` directory is generated with all static files
+3. Commit and push fixes to trigger new deployment
+4. Monitor GitHub Actions workflow for deployment status
+
 ## 🔧 Development
 
 ### Local Development
