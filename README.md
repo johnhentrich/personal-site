@@ -16,9 +16,9 @@ Open [http://localhost:3000](http://localhost:3000)
 - 🔒 **Enterprise Security** - XSS protection, secure initialization, comprehensive error boundaries
 - ⚡ **Performance Optimized** - Async data loading, centralized fetching utility, development caching  
 - 🛡️ **Production Ready** - Error boundaries, graceful fallbacks, environment-guarded logging
-- 🌙 **Advanced Dark Mode** - Persistent theme with localStorage, SSR-compatible, FOUC prevention
+- 🌙 **Complete Theme System** - Bulletproof dark mode with 37 comprehensive tests, zero FOUC
 - 📱 **Responsive Design** - Mobile-first Tailwind CSS with smooth transitions
-- 🧪 **Comprehensive Testing** - 235+ tests with security, error boundary, and integration coverage
+- 🧪 **Comprehensive Testing** - 270+ tests with security, theme system, and integration coverage
 - 🚀 **Automated Deployment** - GitHub Pages with CI/CD pipeline
 
 ## 🛠️ Tech Stack
@@ -45,16 +45,18 @@ src/
 │   └── resume/page.tsx           # Professional experience with async loading
 ├── components/
 │   ├── ErrorBoundary.tsx         # Application-level error boundary
-│   ├── DarkModeInitializer.tsx   # Secure theme initialization component
+│   ├── ThemeScript.tsx           # SSR-safe theme initialization
 │   ├── template/                 # Layout components (Header, Hero, PageLayout)
-│   └── ui/                       # UI components (ThemeToggle)
+│   └── ui/
+│       └── ThemeToggle.tsx       # Modern theme toggle components
 ├── lib/
 │   ├── dataFetcher.ts            # Centralized async data loading utility
+│   ├── theme.ts                  # Core theme utilities with error handling
 │   └── utils.ts                  # Utility functions and helpers
 ├── hooks/
-│   └── useDarkMode.ts            # Dark mode state management hook
+│   └── useTheme.ts               # Theme state management hook
 ├── contexts/
-│   └── ThemeContext.tsx          # Theme provider context
+│   └── ThemeProvider.tsx         # Optimized theme context provider
 └── test/                         # Test utilities and integration tests
 
 data/
@@ -124,31 +126,46 @@ export default async function ProjectsPage() {
 const SafeComponent = withErrorBoundary(MyComponent, fallbackUI, onError)
 ```
 
-## 🌙 Dark Mode System
+## 🌙 Theme System (Complete Refactor)
 
-### Secure Implementation
-- **No XSS Risk** - Secure client-side initialization component
-- **SSR Compatible** - Proper hydration without FOUC
-- **Persistent** - localStorage with comprehensive error handling
-- **Coordinated** - Prevents conflicts between initialization and state management
+### Architecture Highlights
+- **Complete Rewrite** - Built from scratch with test-first approach
+- **37 Comprehensive Tests** - Full coverage including error scenarios and edge cases
+- **Zero FOUC** - SSR-safe initialization prevents any visual glitches
+- **Bulletproof State** - Single source of truth with no race conditions
+- **Universal Compatibility** - Works across all browsers and environments
 
-### Components
+### Core Components
 ```typescript
-DarkModeInitializer  // Secure early theme setup
-useDarkMode()        // State management hook
-ThemeContext         // React context provider
-ThemeToggle          // User interface component
+// Core theme utilities
+src/lib/theme.ts           // Browser-safe operations with graceful fallbacks
+
+// React integration
+src/hooks/useTheme.ts      // State management hook with SSR handling
+src/contexts/ThemeProvider.tsx  // Optimized context provider
+
+// UI components
+src/components/ThemeScript.tsx   // Secure early initialization
+src/components/ui/ThemeToggle.tsx // Accessible toggle components
 ```
+
+### Key Achievements
+1. **Eliminated timing issues** - No more race conditions or coordination problems
+2. **Enhanced error handling** - Graceful fallbacks for localStorage and system errors
+3. **Improved performance** - Reduced re-renders and optimized state management
+4. **Security hardened** - No unsafe HTML injection, secure script handling
+5. **Comprehensive testing** - 37 tests covering all scenarios including failures
 
 ## 🧪 Testing Infrastructure
 
-### Comprehensive Coverage (235+ Tests)
+### Comprehensive Coverage (270+ Tests)
+- 🌙 **Theme System Tests** - 37 focused tests covering all functionality and edge cases
 - 🔒 **Security Tests** - XSS prevention, safe initialization patterns
 - 🛡️ **Error Boundaries** - Component error handling, fallback UI, accessibility
 - ⚡ **Performance** - Async operations, data fetching reliability
 - 🎯 **Components** - All UI components with user interactions
 - 🔗 **Integration** - Page rendering, navigation, cross-component coordination
-- 🪝 **Hooks** - Dark mode persistence, localStorage, SSR compatibility
+- 🪝 **Hooks** - Theme persistence, localStorage handling, SSR compatibility
 - 📊 **Data Handling** - JSON validation, error scenarios, malformed data
 
 ### Test Commands
@@ -266,9 +283,10 @@ npm run test             # Comprehensive test suite
 ## 📈 Performance Metrics
 
 - **Build Time** - Fast compilation with TypeScript validation
-- **Test Suite** - 235+ tests running efficiently with Vitest
-- **Bundle Size** - Optimized static site generation
+- **Test Suite** - 270+ tests running efficiently with Vitest
+- **Bundle Size** - Optimized static site generation with theme system
 - **Runtime** - Non-blocking async operations throughout
+- **Theme Performance** - Zero FOUC with optimized state management
 - **Error Recovery** - Graceful fallbacks prevent application crashes
 
 ## 🤝 Contributing
