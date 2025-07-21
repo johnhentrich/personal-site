@@ -30,7 +30,7 @@ describe('Live Dark Mode Integration Test', () => {
     )
 
     const button = screen.getByRole('button')
-    const testContent = screen.getByText('Test content that should change color')
+    screen.getByText('Test content that should change color')
     
     console.log('Initial document classes:', document.documentElement.className)
     console.log('Initial classList contains dark:', document.documentElement.classList.contains('dark'))
@@ -80,7 +80,7 @@ describe('Live Dark Mode Integration Test', () => {
     document.documentElement.classList.remove('dark')
     
     // Re-render to see if classes change
-    const { rerender } = render(
+    render(
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700">
         Light mode test element  
       </div>
@@ -101,7 +101,7 @@ describe('Live Dark Mode Integration Test', () => {
         } else {
           document.documentElement.classList.remove('dark')
         }
-      } catch (e) {
+      } catch {
         document.documentElement.classList.add('dark')
       }
     }

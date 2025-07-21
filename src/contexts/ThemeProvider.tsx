@@ -33,7 +33,7 @@ export interface ThemeProviderProps {
  */
 export function ThemeProvider({ 
   children 
-}: ThemeProviderProps): JSX.Element {
+}: ThemeProviderProps): React.JSX.Element {
   const themeHook = useThemeHook()
   
   // Context value includes hook values plus ready state

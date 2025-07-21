@@ -15,7 +15,14 @@
       "Bash(git push:*)",
       "Bash(rm:*)",
       "Bash(git log:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npm run test:*)",
+      "Bash(pkill:*)",
+      "Bash(git rm:*)",
+      "Bash(curl:*)",
+      "Bash(npx next lint:*)",
+      "Bash(gh workflow:*)",
+      "Bash(gh run list:*)"
     ],
     "deny": []
   }

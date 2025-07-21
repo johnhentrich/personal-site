@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
@@ -77,7 +77,7 @@ describe('Dark Mode Debugging Tests', () => {
   it('should start in dark mode by default', () => {
     mockLocalStorage.getItem.mockReturnValue(null)
     
-    const { container } = render(
+    const { } = render(
       <ThemeProvider>
         <ThemeToggle />
       </ThemeProvider>
@@ -212,8 +212,8 @@ describe('Dark Mode Debugging Tests', () => {
 
   it('should verify server-side script functionality', () => {
     // Test what the server-side script should do
-    const mockSetItem = vi.fn()
-    const mockGetItem = vi.fn()
+    vi.fn()
+    vi.fn()
     
     // Simulate the server-side script logic
     const simulateServerScript = (storedValue: string | null) => {
@@ -224,7 +224,7 @@ describe('Dark Mode Debugging Tests', () => {
         } else {
           mockClassList.remove('dark')
         }
-      } catch (e) {
+      } catch {
         mockClassList.add('dark')
       }
     }

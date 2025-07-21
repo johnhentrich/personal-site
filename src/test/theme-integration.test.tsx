@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { ThemeProvider, useTheme } from '../contexts/ThemeProvider'
 import { ThemeToggle, SimpleThemeToggle } from '../components/ui/ThemeToggle'
-import * as themeLib from '../lib/theme'
+import '../lib/theme'
 
 // Mock localStorage
 const localStorageMock = (() => {

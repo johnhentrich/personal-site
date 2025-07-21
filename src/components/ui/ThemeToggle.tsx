@@ -32,7 +32,7 @@ export function ThemeToggle({
   showLabel = false,
   variant = 'ghost',
   size = 'md'
-}: ThemeToggleProps): JSX.Element {
+}: ThemeToggleProps): React.JSX.Element {
   const { theme, toggle, isDark } = useTheme()
   
   // Size classes
@@ -95,7 +95,7 @@ export function ThemeToggle({
  * A simplified version of the theme toggle with minimal styling.
  * Useful for navigation bars or constrained spaces.
  */
-export function SimpleThemeToggle({ className = '' }: { className?: string }): JSX.Element {
+export function SimpleThemeToggle({ className = '' }: { className?: string }): React.JSX.Element {
   const { toggle, isDark } = useTheme()
   
   const buttonClasses = [
@@ -128,7 +128,7 @@ export function SimpleThemeToggle({ className = '' }: { className?: string }): J
  * A more advanced theme toggle that shows all available options.
  * Includes system preference option.
  */
-export function ThemeToggleDropdown({ className = '' }: { className?: string }): JSX.Element {
+export function ThemeToggleDropdown({ className = '' }: { className?: string }): React.JSX.Element {
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = React.useState(false)
   

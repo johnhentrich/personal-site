@@ -6,6 +6,7 @@
  * to the DOM immediately based on stored preference or system preference.
  */
 
+import React from 'react'
 import { THEME_STORAGE_KEY, SYSTEM_THEME_QUERY } from '../lib/theme'
 
 /**
@@ -17,7 +18,7 @@ import { THEME_STORAGE_KEY, SYSTEM_THEME_QUERY } from '../lib/theme'
  * 3. Applies theme to DOM immediately
  * 4. Works before React hydration
  */
-export function ThemeScript(): JSX.Element {
+export function ThemeScript(): React.JSX.Element {
   // Create the theme initialization script as a string
   const themeScript = `
     (function() {
@@ -91,7 +92,7 @@ export function ThemeScript(): JSX.Element {
  * Provides CSS-based theme detection when JavaScript is disabled.
  * Uses CSS media queries to apply dark theme based on system preference.
  */
-export function ThemeNoScript(): JSX.Element {
+export function ThemeNoScript(): React.JSX.Element {
   const noScriptStyles = `
     @media (prefers-color-scheme: dark) {
       html {

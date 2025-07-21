@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ErrorBoundary, withErrorBoundary, useErrorHandler } from './ErrorBoundary'
-import { useState } from 'react'
 
 // Mock window.location.reload and window.history.back
 Object.defineProperty(window, 'location', {
@@ -27,30 +26,6 @@ function ThrowError({ shouldThrow = false }: { shouldThrow?: boolean }) {
   return <div>No error</div>
 }
 
-// Component that can trigger an error
-function TriggerError() {
-  const [shouldThrow, setShouldThrow] = useState(false)
-  const handleError = useErrorHandler()
-
-  const triggerError = () => {
-    try {
-      setShouldThrow(true)
-    } catch (error) {
-      handleError(error as Error)
-    }
-  }
-
-  if (shouldThrow) {
-    throw new Error('Triggered error')
-  }
-
-  return (
-    <div>
-      <button onClick={triggerError}>Trigger Error</button>
-      <div>Working component</div>
-    </div>
-  )
-}
 
 describe('ErrorBoundary', () => {
   beforeEach(() => {

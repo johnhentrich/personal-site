@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import React, { useState, useEffect } from 'react'
 
 // Test utilities for localStorage
@@ -85,7 +85,7 @@ describe('Theme System - Core Requirements', () => {
   describe('Theme Switching', () => {
     it('should toggle between light and dark modes', () => {
       // Start with light mode
-      let currentTheme = 'light'
+      const currentTheme = 'light'
       
       // Simulate theme toggle
       const newTheme = currentTheme === 'light' ? 'dark' : 'light'
@@ -146,7 +146,7 @@ describe('Theme System - Core Requirements', () => {
       expect(() => {
         try {
           localStorageMock.getItem('theme')
-        } catch (error) {
+        } catch {
           // Handle gracefully
           return 'light' // fallback
         }
@@ -225,7 +225,7 @@ describe('Theme System - Core Requirements', () => {
       expect(() => {
         try {
           localStorageMock.setItem('theme', 'dark')
-        } catch (error) {
+        } catch {
           // Log error but don't crash
           console.warn('Failed to save theme preference:', error)
         }
@@ -243,7 +243,7 @@ describe('Theme System - Core Requirements', () => {
           if (stored === 'light' || stored === 'dark') {
             return stored
           }
-        } catch (error) {
+        } catch {
           // Handle error
         }
         return 'light' // fallback

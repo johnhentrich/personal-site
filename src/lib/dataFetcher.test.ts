@@ -39,7 +39,7 @@ describe('Data Fetcher Utility', () => {
 
     it('should handle file not found error with fallback data', async () => {
       const fallbackData = { fallback: true }
-      const error = new Error('ENOENT: no such file or directory') as any
+      const error = new Error('ENOENT: no such file or directory') as NodeJS.ErrnoException
       error.code = 'ENOENT'
       mockReadFile.mockRejectedValue(error)
 
@@ -55,7 +55,7 @@ describe('Data Fetcher Utility', () => {
     })
 
     it('should throw DataFetchException when file not found and no fallback', async () => {
-      const error = new Error('ENOENT: no such file or directory') as any
+      const error = new Error('ENOENT: no such file or directory') as NodeJS.ErrnoException
       error.code = 'ENOENT'
       mockReadFile.mockRejectedValue(error)
 
@@ -158,7 +158,7 @@ describe('Data Fetcher Utility', () => {
       const mockData1 = { file: 1 }
       const fallbackData2 = { fallback: 2 }
       
-      const error = new Error('ENOENT') as any
+      const error = new Error('ENOENT') as NodeJS.ErrnoException
       error.code = 'ENOENT'
       
       mockReadFile
@@ -179,7 +179,8 @@ describe('Data Fetcher Utility', () => {
   describe('fetchJsonDataCached', () => {
     beforeEach(() => {
       // Clear any existing cache
-      const dataCache = new Map()
+      // Clear any existing cache
+      new Map()
       // Access the internal cache - this is a bit hacky but needed for testing
     })
 
