@@ -27,7 +27,10 @@
       "Bash(/tmp/rebase_script.sh:*)",
       "Bash(git checkout:*)",
       "Bash(gh repo view:*)",
-      "WebFetch(domain:johnhentrich.com)"
+      "WebFetch(domain:johnhentrich.com)",
+      "Bash(cat:*)",
+      "Bash(npm run validate:*)",
+      "Bash(jq:*)"
     ],
     "deny": []
   }
