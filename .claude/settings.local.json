@@ -25,7 +25,9 @@
       "Bash(gh run list:*)",
       "Bash(chmod:*)",
       "Bash(/tmp/rebase_script.sh:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:johnhentrich.com)"
     ],
     "deny": []
   }
